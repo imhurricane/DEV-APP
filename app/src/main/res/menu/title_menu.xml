@@ -1,0 +1,23 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <!--toolbar.inflateMenu(R.menu.menu);-->
+    <item
+        android:id="@+id/action_search"
+        android:icon="@drawable/sousuo"
+        android:title="Search"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/action_notifications"
+        android:icon="@drawable/saoyisao"
+        android:title="notifications"
+        app:showAsAction="ifRoom" />
+
+    <item
+        android:id="@+id/action_settings"
+        android:icon="@mipmap/ic_launcher"
+        android:orderInCategory="100"
+        android:title="猜猜我是谁"
+        app:showAsAction="never" />
+</menu>
+

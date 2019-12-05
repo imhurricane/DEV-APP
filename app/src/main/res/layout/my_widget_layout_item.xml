@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:background="@color/lightDark"
+    android:layout_height="32dp">
+
+    <ImageView
+        android:id="@+id/item_image"
+        android:layout_width="30dp"
+        android:layout_height="match_parent"
+        android:scaleType="centerCrop"
+        android:src="@drawable/shanghai"/>
+
+    <TextView
+        android:layout_weight="1"
+        android:id="@+id/widget_list_item_tv"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:textColor="@color/colorPrimary"
+        android:gravity="center_vertical"
+        android:clickable="true"
+        android:paddingLeft="10dp"/>
+
+    <Button
+        android:id="@+id/widget_list_item_button"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:background="@color/soft_4"
+        android:text="同意"/>
+
+</LinearLayout>

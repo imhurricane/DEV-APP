@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+
+    <dbname value="edaDataBase" />
+
+    <version value="2" />
+
+    <list>
+        <!--用户-->
+        <mapping class="com.dev.eda.frame.login.model.LoginUser" />
+
+    </list>
+<!--    <storage value="external" />-->
+</litepal>

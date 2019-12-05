@@ -1,0 +1,91 @@
+apply plugin: 'com.android.application'
+
+android {
+
+    signingConfigs {
+        config {
+            keyAlias 'dev'
+            keyPassword 'hurricane'
+            storeFile file('../dev.jks')
+            storePassword 'hurricane'
+        }
+    }
+    compileSdkVersion 28
+    defaultConfig {
+        applicationId "com.dev.eda"
+        minSdkVersion 19
+        targetSdkVersion 28
+        versionCode 1
+        versionName "1.0.1"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+    buildTypes {
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "boolean", "USE_CANARY", "true"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField "boolean", "USE_CANARY", "false"
+            minifyEnabled true
+            shrinkResources true
+            zipAlignEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+}
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    androidTestImplementation('androidx.test.espresso:espresso-core:3.1.0', {
+        exclude group: 'com.android.support', module: 'support-annotations'
+    })
+    implementation 'androidx.appcompat:appcompat:1.1.0'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
+
+    implementation 'com.google.android.material:material:1.0.0'
+
+    implementation 'com.github.LRH1993:AutoFlowLayout:1.0.5'
+
+    // statusBar基础依赖包，必须要依赖
+    implementation 'com.gyf.immersionbar:immersionbar:3.0.0'
+    // fragment快速实现statusBar（可选）
+    implementation 'com.gyf.immersionbar:immersionbar-components:3.0.0'
+    //轮播图
+    implementation 'com.youth.banner:banner:1.4.10'  //最新版本
+    //RecyclerViewAdapter
+    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47'
+    //sqlLite
+    implementation 'org.litepal.android:java:3.0.0'
+    //okHttp
+    implementation 'com.lzy.net:okgo:3.0.4'
+    //updateAppUtils
+    implementation 'com.teprinciple:updateapputils:2.1.0'
+    implementation 'com.daimajia.numberprogressbar:library:1.4'
+    // butterknife
+    implementation 'com.jakewharton:butterknife:10.2.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:10.2.0'
+    //图片加载
+    implementation 'com.github.bumptech.glide:glide:4.10.0'
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.10.0'
+    //Gson
+    implementation 'com.google.code.gson:gson:2.8.6'
+    implementation 'org.jetbrains:annotations:15.0'
+    //JPush
+    implementation files('../libs/jcore-android-2.2.2.jar')
+    implementation files('../libs/jpush-android-3.4.0.jar')
+    implementation files('../libs/armeabi-v7a/libjcore222.so')
+    //二维码
+    implementation 'cn.yipianfengye.android:zxing-library:2.2'
+    //chart
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
+
+}
