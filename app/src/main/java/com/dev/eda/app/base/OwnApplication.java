@@ -2,6 +2,7 @@ package com.dev.eda.app.base;
 
 import android.app.Application;
 import android.app.Notification;
+import android.content.Context;
 import android.content.Intent;
 
 import com.dev.eda.R;
@@ -34,10 +35,13 @@ import okhttp3.OkHttpClient;
 
 public class OwnApplication extends Application {
 
+    //全局Context
+    private static Context sContext;
+
     @Override
     public void onCreate() {
         super.onCreate();
-
+        sContext = getApplicationContext();
         CrashProtectManager.getInstance(this).init();
         //全局Context获取类
         ContextHelper.getInstance().init(this);
@@ -100,5 +104,9 @@ public class OwnApplication extends Application {
 //                .addCommonParams(params);                       //全局公共参数
 
 
+    }
+
+    public static Context getContext() {
+        return sContext;
     }
 }

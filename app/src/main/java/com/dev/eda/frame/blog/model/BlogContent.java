@@ -37,7 +37,6 @@ public class BlogContent implements MultiItemEntity {
         this.images = images;
     }
 
-
     public String getTimeAndAddress() {
         return timeAndAddress;
     }

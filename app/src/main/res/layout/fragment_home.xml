@@ -17,12 +17,11 @@
             android:layout_height="match_parent"
             app:contentScrim="@color/soft_2"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
-
             app:toolbarId="@+id/toolbar">
 
             <com.youth.banner.Banner
                 android:id="@+id/banner"
-                app:layout_collapseMode="parallax"
+                app:layout_collapseMode="none"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
             </com.youth.banner.Banner>

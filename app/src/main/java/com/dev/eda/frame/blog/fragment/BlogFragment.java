@@ -3,17 +3,16 @@ package com.dev.eda.frame.blog.fragment;
 
 import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.ImageView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dev.eda.R;
 import com.dev.eda.app.base.BaseFragment;
-import com.dev.eda.app.utils.Logger;
 import com.dev.eda.frame.blog.adapter.BlogAdapter;
 import com.dev.eda.frame.blog.model.Blog;
 import com.dev.eda.frame.blog.model.BlogContent;
@@ -71,6 +70,7 @@ public class BlogFragment extends BaseFragment {
     protected void initData() {
         super.initData();
         blogList = new ArrayList<>();
+
         for (int i = 0; i < 10; i++) {
             Blog blog = new Blog();
             blog.setTitleImageResource(R.drawable.shanghai);
@@ -98,7 +98,7 @@ public class BlogFragment extends BaseFragment {
 
             BlogContent blogContent3 = new BlogContent(BlogContent.itemType_good);
             blogContent3.setGoodText("❤雷佳音,hurricane");
-            blogContents.add(blogContent3);
+//            blogContents.add(blogContent3);
 
             blog.setBlogContents(blogContents);
             blogList.add(blog);
@@ -116,6 +116,7 @@ public class BlogFragment extends BaseFragment {
                     blogToolbarLayout.setContentScrimColor(Color.parseColor("#00000000"));
                 } else if (state == State.COLLAPSED) {
                     //折叠状态
+                    blogAppBar.setVisibility(View.VISIBLE);
                     blogToolbarLayout.setContentScrimColor(Color.parseColor("#99CCFF"));
                 } else {
                     //中间状态
@@ -128,7 +129,7 @@ public class BlogFragment extends BaseFragment {
 //        DividerItemDecoration itemDecoration = new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL);
 //        recyclerView.addItemDecoration(itemDecoration);
         recyclerView.setLayoutManager(linearLayoutManager);
-        recyclerView.setAdapter(new BlogAdapter(R.layout.item_card_bolg,getContext(), blogList));
+        recyclerView.setAdapter(new BlogAdapter(R.layout.item_blog_content,getContext(), blogList));
     }
 
     @Override
