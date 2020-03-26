@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="280dp"
@@ -24,7 +23,7 @@
             app:layout_constraintHorizontal_bias="0.502"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="版本更新啦!"/>
+            tools:text="版本更新啦!" />
 
         <ScrollView
             android:id="@+id/scrollView2"
@@ -47,7 +46,7 @@
                 android:paddingRight="20dp"
                 android:textColor="@color/text_content"
                 android:textSize="14sp"
-                tools:text="1、快来升级最新版本\n2、这次更漂亮了\n3、快点来吧"/>
+                tools:text="1、快来升级最新版本\n2、这次更漂亮了\n3、快点来吧" />
         </ScrollView>
 
         <TextView
@@ -64,7 +63,7 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/scrollView2"/>
+            app:layout_constraintTop_toBottomOf="@+id/scrollView2" />
 
         <TextView
             android:id="@+id/tv_version_name"
@@ -76,7 +75,7 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:text="V_1.00.00"/>
+            tools:text="V_1.00.00" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -86,6 +85,6 @@
         android:layout_height="30dp"
         android:layout_gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:src="@drawable/ic_close"/>
+        android:src="@drawable/ic_close" />
 
 </LinearLayout>

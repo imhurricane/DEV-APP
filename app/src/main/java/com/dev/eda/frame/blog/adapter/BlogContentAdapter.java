@@ -57,8 +57,10 @@ public class BlogContentAdapter extends BaseMultiItemQuickAdapter<BlogContent, B
                 break;
             case BlogContent.itemType_images:
                 RecyclerView view = helper.getView(R.id.item_blog_image_recycle);
+                view.setHasFixedSize(true);
+                view.setNestedScrollingEnabled(false);
                 view.setLayoutManager(new GridLayoutManager(mContext, 3, GridLayoutManager.VERTICAL, false));
-                view.setAdapter(new BlogImageRecycleViewAdapter(R.layout.item_blog_image, item.getImages()));
+                view.setAdapter(new BlogImageRecycleViewAdapter(mContext,R.layout.item_blog_image, item.getImages(),item.getImagePaths(),item.getImageTitles()));
                 break;
             case BlogContent.itemType_more:
 
@@ -81,12 +83,12 @@ public class BlogContentAdapter extends BaseMultiItemQuickAdapter<BlogContent, B
                 tvSend.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-//                        if (TextUtils.isEmpty(etComment.getText().toString())) {
-//                            Toast.makeText(mContext, "请输入评论内容", Toast.LENGTH_SHORT).show();
-//                            return;
-//                        }
+                        if (TextUtils.isEmpty(etComment.getText().toString())) {
+                            Toast.makeText(mContext, "请输入评论内容", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         setViewTreeObserver();
-//                        updateEditTextBodyVisible(View.GONE);
+                        updateEditTextBodyVisible(View.GONE);
                     }
                 });
                 view1.setOnClickListener(new View.OnClickListener() {

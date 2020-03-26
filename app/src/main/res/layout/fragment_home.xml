@@ -23,8 +23,7 @@
                 android:id="@+id/banner"
                 app:layout_collapseMode="none"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent">
-            </com.youth.banner.Banner>
+                android:layout_height="match_parent"></com.youth.banner.Banner>
 
             <androidx.appcompat.widget.Toolbar
                 android:id="@+id/toolbar"
@@ -32,11 +31,13 @@
                 android:layout_height="?attr/actionBarSize"
                 android:layout_below="@+id/view"
                 app:layout_collapseMode="pin">
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:orientation="horizontal"
                     android:layout_marginRight="20dp">
+
                     <LinearLayout
                         android:id="@+id/mainLinear"
                         android:layout_width="wrap_content"

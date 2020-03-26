@@ -34,9 +34,10 @@
             android:id="@+id/open_light"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:src="@drawable/shanguangdeng"/>
+            android:src="@drawable/shanguangdeng" />
 
     </LinearLayout>
+
     <FrameLayout
         android:id="@+id/fl_my_container"
         android:layout_width="match_parent"

@@ -13,12 +13,12 @@
         android:paddingTop="20dp"
         android:paddingLeft="@dimen/dp_10"
         android:textSize="18sp"
-        android:text="分类"/>
+        android:text="分类" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/item_recycler_view_centre"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
 
 </LinearLayout>

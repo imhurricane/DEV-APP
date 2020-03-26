@@ -9,6 +9,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textSize="16sp"
-        android:text="我今天写了很多很多的代码"/>
+        android:text="我今天写了很多很多的代码" />
 
 </LinearLayout>

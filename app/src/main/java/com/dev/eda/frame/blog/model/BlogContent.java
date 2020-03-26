@@ -2,6 +2,7 @@ package com.dev.eda.frame.blog.model;
 
 import com.chad.library.adapter.base.entity.MultiItemEntity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class BlogContent implements MultiItemEntity {
@@ -16,6 +17,10 @@ public class BlogContent implements MultiItemEntity {
     private String content;
 
     private List<BlogImage> images;
+
+    private ArrayList imagePaths;
+
+    private ArrayList imageTitles;
 
     private String timeAndAddress;
 
@@ -55,6 +60,22 @@ public class BlogContent implements MultiItemEntity {
 
     public BlogContent(int itemType) {
         this.itemType = itemType;
+    }
+
+    public ArrayList getImagePaths() {
+        return imagePaths;
+    }
+
+    public void setImagePaths(ArrayList imagePaths) {
+        this.imagePaths = imagePaths;
+    }
+
+    public ArrayList getImageTitles() {
+        return imageTitles;
+    }
+
+    public void setImageTitles(ArrayList imageTitles) {
+        this.imageTitles = imageTitles;
     }
 
     @Override

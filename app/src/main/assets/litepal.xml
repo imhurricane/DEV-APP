@@ -10,5 +10,5 @@
         <mapping class="com.dev.eda.frame.login.model.LoginUser" />
 
     </list>
-<!--    <storage value="external" />-->
+    <!--    <storage value="external" />-->
 </litepal>

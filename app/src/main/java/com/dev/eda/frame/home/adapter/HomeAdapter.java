@@ -1,6 +1,8 @@
 package com.dev.eda.frame.home.adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.view.View;
 
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -11,6 +13,7 @@ import com.dev.eda.R;
 import com.dev.eda.app.chart.MyMarkerView;
 import com.dev.eda.app.utils.ChartsTool;
 import com.dev.eda.frame.home.model.Home;
+import com.dev.eda.frame.root.activity.MainActivity;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
@@ -21,6 +24,8 @@ import com.github.mikephil.charting.data.LineDataSet;
 
 import java.util.ArrayList;
 import java.util.List;
+
+//import com.example.wyh.intelcheckbash.MainActivity;
 
 
 public class HomeAdapter extends BaseMultiItemQuickAdapter<Home, BaseViewHolder> {
@@ -44,7 +49,14 @@ public class HomeAdapter extends BaseMultiItemQuickAdapter<Home, BaseViewHolder>
             case Home.itemType_grid:
                 RecyclerView view = helper.getView(R.id.item_grid_recycle);
                 view.setLayoutManager(new GridLayoutManager(mContext,4,GridLayoutManager.VERTICAL,false));
-                view.setAdapter(new HomeGridRecycleViewAdapter(R.layout.item_grid,item.getEntryModels()));
+                view.setAdapter(new HomeGridRecycleViewAdapter(R.layout.item_grid,item.getEntryModels(),mContext));
+                view.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(mContext, MainActivity.class);
+                        mContext.startActivity(intent);
+                    }
+                });
                 break;
             case Home.itemType_card:
                 helper.setImageResource(R.id.iv_avatar, item.getNeedToDo().getResourceId());

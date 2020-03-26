@@ -10,7 +10,7 @@
         android:layout_width="30dp"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/shanghai"/>
+        android:src="@drawable/shanghai" />
 
     <TextView
         android:layout_weight="1"
@@ -20,13 +20,13 @@
         android:textColor="@color/colorPrimary"
         android:gravity="center_vertical"
         android:clickable="true"
-        android:paddingLeft="10dp"/>
+        android:paddingLeft="10dp" />
 
     <Button
         android:id="@+id/widget_list_item_button"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:background="@color/soft_4"
-        android:text="同意"/>
+        android:text="同意" />
 
 </LinearLayout>

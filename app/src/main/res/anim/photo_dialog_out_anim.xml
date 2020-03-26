@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<set xmlns:android="http://schemas.android.com/apk/res/android" >
+<set xmlns:android="http://schemas.android.com/apk/res/android">
 
     <!-- p parent 父控件  100%p弹出一个屏幕-->
     <translate

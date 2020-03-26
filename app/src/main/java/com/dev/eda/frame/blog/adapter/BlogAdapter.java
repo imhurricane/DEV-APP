@@ -49,13 +49,11 @@ public class BlogAdapter extends BaseQuickAdapter<Blog, BaseViewHolder> {
         helper.setText(R.id.user_name, item.getName());
         helper.setImageResource(R.id.user_title_image, item.getTitleImageResource());
         RecyclerView recyclerView = helper.getView(R.id.item_blog_recycle_view);
-        recyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-
-
-
-
+        LinearLayoutManager li = new LinearLayoutManager(mContext);
+        recyclerView.setLayoutManager(li);
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setNestedScrollingEnabled(false);
         BlogContentAdapter blogContentAdapter = new BlogContentAdapter(mContext, item.getBlogContents());
-
         recyclerView.setAdapter(blogContentAdapter);
     }
 

@@ -1,5 +1,4 @@
 apply plugin: 'com.android.application'
-
 android {
 
     signingConfigs {
@@ -13,7 +12,7 @@ android {
     compileSdkVersion 28
     defaultConfig {
         applicationId "com.dev.eda"
-        minSdkVersion 19
+        minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
         versionName "1.0.1"
@@ -40,6 +39,7 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    buildToolsVersion = '28.0.3'
 
 }
 
@@ -52,7 +52,6 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
 
     implementation 'com.google.android.material:material:1.0.0'
-
     implementation 'com.github.LRH1993:AutoFlowLayout:1.0.5'
 
     // statusBar基础依赖包，必须要依赖
@@ -87,5 +86,13 @@ dependencies {
     implementation 'cn.yipianfengye.android:zxing-library:2.2'
     //chart
     implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'
-
+    //
+    implementation 'com.github.chrisbanes:PhotoView:2.1.3'
+    //ibeacon
+//    implementation files('../libs/ab-sdk-beta1.7.3.jar')
+//    implementation files('../libs/aprilscansdk.jar')
+    //引入module
+//    implementation project(':tour')
+//    implementation 'androidx.appcompat:appcompat:1.0.0'
+//    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 }

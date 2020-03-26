@@ -10,8 +10,8 @@
         android:layout_height="wrap_content"
         android:textColor="#232323"
         android:textSize="14sp"
-        android:text=""
-        />
+        android:text="" />
+
     <TextView
         android:id="@+id/textState"
         android:layout_width="match_parent"
@@ -20,7 +20,6 @@
         android:textColor="#8290AF"
         android:paddingTop="5dp"
         android:paddingBottom="5dp"
-        android:text=""
-        />
+        android:text="" />
 
 </LinearLayout>

@@ -84,11 +84,18 @@ public class BlogFragment extends BaseFragment {
 
             BlogContent blogContent1 = new BlogContent(BlogContent.itemType_images);
             List<BlogImage> blogImages = new ArrayList<>();
+            ArrayList imagePaths = new ArrayList();
+            ArrayList imageTitles = new ArrayList();
             for (int j = 0; j < 7; j++) {
                 BlogImage image = new BlogImage();
                 image.setImageResource(R.drawable.shanghai);
+                image.setImagePosition(j);
+                imagePaths.add("http://img4.duitang.com/uploads/item/201511/02/20151102130410_Mds2x.thumb.700_0.jpeg");
+                imageTitles.add("图片描述");
                 blogImages.add(image);
             }
+            blogContent1.setImagePaths(imagePaths);
+            blogContent1.setImageTitles(imageTitles);
             blogContent1.setImages(blogImages);
             blogContents.add(blogContent1);
 
