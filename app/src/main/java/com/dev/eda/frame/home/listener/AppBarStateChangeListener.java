@@ -1,6 +1,7 @@
 package com.dev.eda.frame.home.listener;
 
-import com.google.android.material.appbar.AppBarLayout;
+
+import android.support.design.widget.AppBarLayout;
 
 public abstract class AppBarStateChangeListener implements AppBarLayout.OnOffsetChangedListener {
 

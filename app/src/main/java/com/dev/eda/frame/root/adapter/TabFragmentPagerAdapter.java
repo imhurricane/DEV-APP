@@ -1,10 +1,11 @@
 package com.dev.eda.frame.root.adapter;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentStatePagerAdapter;
+
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentStatePagerAdapter;
 
 import com.dev.eda.frame.blog.fragment.BlogFragment;
 import com.dev.eda.frame.centre.fragment.CentreFragment;
@@ -16,7 +17,7 @@ public class TabFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
     private String[] mData;
 
-    public TabFragmentPagerAdapter(@NonNull FragmentManager fm,String[] data) {
+    public TabFragmentPagerAdapter(@NonNull FragmentManager fm, String[] data) {
         super(fm);
         mData = data;
     }

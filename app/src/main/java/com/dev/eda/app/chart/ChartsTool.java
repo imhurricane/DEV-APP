@@ -1,6 +1,8 @@
 package com.dev.eda.app.chart;
 
 import android.graphics.Color;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.util.Range;
 import android.widget.Toast;
 
@@ -14,6 +16,7 @@ import com.github.mikephil.charting.data.LineDataSet;
 import com.github.mikephil.charting.formatter.IFillFormatter;
 import com.github.mikephil.charting.interfaces.dataprovider.LineDataProvider;
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.utils.Utils;
 
 import java.util.ArrayList;
 
@@ -24,6 +27,11 @@ public class ChartsTool extends BaseActivity {
     @BindView(R.id.chart1)
     LineChart chart;
 
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+    }
 
     @Override
     protected int getLayoutId() {

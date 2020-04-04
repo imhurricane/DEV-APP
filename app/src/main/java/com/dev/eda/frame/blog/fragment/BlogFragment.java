@@ -1,15 +1,17 @@
 package com.dev.eda.frame.blog.fragment;
 
 
+import android.annotation.SuppressLint;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.dev.eda.R;
 import com.dev.eda.app.base.BaseFragment;
@@ -18,8 +20,6 @@ import com.dev.eda.frame.blog.model.Blog;
 import com.dev.eda.frame.blog.model.BlogContent;
 import com.dev.eda.frame.blog.model.BlogImage;
 import com.dev.eda.frame.home.listener.AppBarStateChangeListener;
-import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -45,6 +45,7 @@ public class BlogFragment extends BaseFragment {
 
     private List<Blog> blogList;
 
+    @SuppressLint("ValidFragment")
     private BlogFragment() {
     }
 

@@ -3,7 +3,6 @@ package com.dev.eda.app.utils;
 import android.util.Log;
 
 import com.google.gson.Gson;
-import com.google.gson.stream.JsonReader;
 import com.lzy.okgo.callback.AbsCallback;
 import com.lzy.okgo.exception.HttpException;
 import com.lzy.okgo.exception.StorageException;
@@ -41,19 +40,18 @@ public abstract class JsonCallback<T> extends AbsCallback<T> {
         T data = null;
         try{
             Gson gson = new Gson();
-            JsonReader reader = new JsonReader(body.charStream());
             if (type != null) {
-                data = gson.fromJson(reader, type);
+                data = gson.fromJson(body.string(), type);
             } else if (clazz != null) {
-                data = gson.fromJson(reader, clazz);
+                data = gson.fromJson(body.string(), clazz);
             } else {
                 Type genType = getClass().getGenericSuperclass();
                 Type type = ((ParameterizedType) genType).getActualTypeArguments()[0];
-                data = gson.fromJson(reader, type);
+                data = gson.fromJson(body.string(), type);
             }
         }catch (Exception e){
             e.printStackTrace();
-            Log.e("GSON","数据解析错误");
+            Log.e("GSON","数据解析错误"+data);
         }
         return data;
     }

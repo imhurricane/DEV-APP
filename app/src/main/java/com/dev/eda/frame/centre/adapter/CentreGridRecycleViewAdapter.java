@@ -1,7 +1,8 @@
 package com.dev.eda.frame.centre.adapter;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
+
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -10,7 +11,7 @@ import com.dev.eda.frame.home.model.EntryModel;
 
 import java.util.List;
 
-public class CentreGridRecycleViewAdapter extends BaseQuickAdapter<EntryModel, BaseViewHolder> {
+public class CentreGridRecycleViewAdapter extends BaseQuickAdapter<EntryModel,BaseViewHolder> {
 
 
     public CentreGridRecycleViewAdapter(int layoutResId, @Nullable List<EntryModel> data) {

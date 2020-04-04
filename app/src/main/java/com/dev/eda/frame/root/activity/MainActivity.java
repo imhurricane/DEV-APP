@@ -1,35 +1,38 @@
 package com.dev.eda.frame.root.activity;
 
+import android.Manifest;
+import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
-import androidx.viewpager.widget.ViewPager;
-
 import com.dev.eda.R;
 import com.dev.eda.app.base.BaseActivity;
 import com.dev.eda.app.receiver.LocalBroadcastManager;
-import com.dev.eda.app.service.DeskService;
 import com.dev.eda.app.utils.AppTool;
 import com.dev.eda.app.utils.ExampleUtil;
 import com.dev.eda.app.utils.Logger;
-import com.dev.eda.frame.login.activity.LoginActivity;
+import com.dev.eda.frame.login.activity.LoginActivity1;
 import com.dev.eda.frame.root.adapter.TabFragmentPagerAdapter;
-import com.google.android.material.tabs.TabLayout;
-import com.gyf.immersionbar.ImmersionBar;
+
 
 import butterknife.BindView;
 import cn.jpush.android.api.JPushInterface;
-
-import static android.content.Intent.ACTION_SCREEN_OFF;
 
 public class MainActivity extends BaseActivity {
 
@@ -37,6 +40,7 @@ public class MainActivity extends BaseActivity {
     ViewPager viewPager;
     @BindView(R.id.tab_layout_view)
     TabLayout tabLayout;
+    ProgressDialog progressDialog;
     //未选中的Tab图片
     private int[] unSelectTabRes = new int[]{R.drawable.sy_01, R.drawable.fl_01, R.drawable.bk_01, R.drawable.mine_01};
     //选中的Tab图片
@@ -44,6 +48,35 @@ public class MainActivity extends BaseActivity {
     //Tab标题
     private String[] title = new String[]{"首页", "分类", "博客", "我的"};
     public static boolean isForeground = false;
+    private Handler myHandler = new Handler();
+    private Runnable mLoadingRunnable = new Runnable() {
+        @Override
+        public void run() {
+            //更新UI线程
+            registerMessageReceiver();  // used for receive msg
+            if (lacksPermissions(PERMISSIONS)) {            // 开始请求权限
+                requestPermissions(PERMISSIONS);
+            }
+
+            boolean login = AppTool.checkLogin();
+            if (!login) {
+                Intent intent = new Intent(MainActivity.this, LoginActivity1.class);
+//            startActivity(intent);
+//            MainActivity.this.finish();
+            }
+        }
+    };
+
+    /**
+     * 请求权限请求码
+     **/
+    public static final int REQUEST_PERMISSION_CODE = 111;
+
+    /**
+     * 权限
+     **/
+    public static final String[] PERMISSIONS =
+            new String[]{Manifest.permission.READ_PHONE_STATE,Manifest.permission.MOUNT_UNMOUNT_FILESYSTEMS,Manifest.permission.ACCESS_FINE_LOCATION,Manifest.permission.READ_EXTERNAL_STORAGE,Manifest.permission.WRITE_EXTERNAL_STORAGE};
 
     @Override
     protected int getLayoutId() {
@@ -53,15 +86,17 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        registerMessageReceiver();  // used for receive msg
+        setTheme(R.style.AppTheme);
+        getWindow().getDecorView().post(new Runnable() {
+            @Override
+            public void run() {
+                myHandler.post(mLoadingRunnable);
+            }
+        });
 
-        boolean login = AppTool.checkLogin();
-        if (!login) {
-            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
-//            startActivity(intent);
-//            MainActivity.this.finish();
-        }
+
     }
+
 
     @Override
     protected void initData() {
@@ -70,6 +105,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initView() {
+        super.initView();
         //使用适配器将ViewPager与Fragment绑定在一起
         viewPager.setAdapter(new TabFragmentPagerAdapter(getSupportFragmentManager(), title));
         //将TabLayout与ViewPager绑定
@@ -176,7 +212,7 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void onDestroy() {
-//        LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(mMessageReceiver);
         super.onDestroy();
     }
 
@@ -218,4 +254,35 @@ public class MainActivity extends BaseActivity {
     private void setCostomMsg(String message) {
         Logger.e("message", message);
     }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == REQUEST_PERMISSION_CODE) {
+
+        }
+    }
+
+    /**
+     * 判断是否缺少权限
+     **/
+    private boolean lacksPermissions(String... permissions) {
+        for (String permission : permissions) {
+            if (ContextCompat.checkSelfPermission(getApplicationContext(), permission) == PackageManager.PERMISSION_DENIED) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+
+    /**
+     * 请求权限
+     **/
+    private void requestPermissions(String... permissions) {
+        ActivityCompat.requestPermissions(this, permissions, REQUEST_PERMISSION_CODE);
+    }
+
+
+
 }

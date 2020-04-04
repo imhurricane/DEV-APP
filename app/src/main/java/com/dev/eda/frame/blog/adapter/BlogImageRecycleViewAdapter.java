@@ -2,12 +2,12 @@ package com.dev.eda.frame.blog.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -20,13 +20,13 @@ import com.github.chrisbanes.photoview.PhotoView;
 import java.util.ArrayList;
 import java.util.List;
 
-public class BlogImageRecycleViewAdapter extends BaseQuickAdapter<BlogImage, BaseViewHolder> {
+public class BlogImageRecycleViewAdapter extends BaseQuickAdapter<BlogImage,BaseViewHolder> {
 
     private Context mContext;
     private ArrayList imagePaths;
     private ArrayList imageTitles;
 
-    public BlogImageRecycleViewAdapter(Context context,int layoutResId, @Nullable List<BlogImage> data,ArrayList imagePaths,ArrayList imageTitles) {
+    public BlogImageRecycleViewAdapter(Context context, int layoutResId, @Nullable List<BlogImage> data, ArrayList imagePaths, ArrayList imageTitles) {
         super(layoutResId, data);
         this.mContext = context;
         this.imagePaths = imagePaths;

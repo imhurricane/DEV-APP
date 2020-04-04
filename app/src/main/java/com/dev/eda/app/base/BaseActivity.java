@@ -1,12 +1,11 @@
 package com.dev.eda.app.base;
 
-import android.app.Activity;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.os.Handler;
+import android.support.annotation.Nullable;
+import android.support.v7.app.AppCompatActivity;
 
-
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.dev.eda.R;
 import com.gyf.immersionbar.ImmersionBar;
@@ -18,7 +17,8 @@ public abstract class BaseActivity extends AppCompatActivity {
     protected String mTag = this.getClass().getSimpleName();
     protected Typeface tfRegular;
     protected Typeface tfLight;
-    protected Activity mActivity;
+    protected AppCompatActivity mActivity;
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

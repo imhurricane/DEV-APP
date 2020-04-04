@@ -48,7 +48,7 @@ public class ListAdapter extends BaseAdapter {
         if(view == null){
             holder = new ViewHolder();
             view = inflater.inflate(R.layout.item_text, null);
-            holder.text = (TextView) view.findViewById(R.id.text);
+            holder.text = view.findViewById(R.id.text);
             view.setTag(holder);
         }else{
             holder = (ViewHolder) view.getTag();

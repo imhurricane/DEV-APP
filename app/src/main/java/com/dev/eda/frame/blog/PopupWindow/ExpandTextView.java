@@ -41,12 +41,12 @@ public class ExpandTextView extends LinearLayout {
     private void initView() {
         setOrientation(LinearLayout.VERTICAL);
         LayoutInflater.from(getContext()).inflate(R.layout.layout_expand_text, this);
-        contentText = (TextView) findViewById(R.id.contentText);
+        contentText = findViewById(R.id.contentText);
         if(showLines > 0){
             contentText.setMaxLines(showLines);
         }
 
-        textState = (TextView) findViewById(R.id.textState);
+        textState = findViewById(R.id.textState);
         textState.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -119,7 +119,7 @@ public class ExpandTextView extends LinearLayout {
         this.expandStatusListener = listener;
     }
 
-    public static interface ExpandStatusListener{
+    public interface ExpandStatusListener{
 
         void statusChange(boolean isExpand);
     }

@@ -1,6 +1,8 @@
 package com.dev.eda.frame.blog.activity;
 
 import android.content.Intent;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -8,8 +10,6 @@ import android.view.WindowManager;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.viewpager.widget.PagerAdapter;
-import androidx.viewpager.widget.ViewPager;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
@@ -66,10 +66,10 @@ public class BigImageActivity extends BaseActivity {
             @Override
             public Object instantiateItem(ViewGroup container, int position) {
                 View view = LayoutInflater.from(BigImageActivity.this).inflate(R.layout.vp_style_big, null);
-                photoView = (PhotoView) view.findViewById(R.id.pv_image);
+                photoView = view.findViewById(R.id.pv_image);
                 TextView tvTitle = view.findViewById(R.id.tv_title);
                 TextView tvIndex = view.findViewById(R.id.tv_index);
-                photoView.setBackgroundColor(getResources().getColor(R.color.Black));
+                photoView.setBackgroundColor(getResources().getColor(R.color.black));
                 tvTitle.setText(title.get(position));
                 tvIndex.setText((position + 1) + "/" + paths.size());
                 final String url = paths.get(position);//图片的url

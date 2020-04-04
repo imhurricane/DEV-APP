@@ -1,31 +1,34 @@
 package com.dev.eda.frame.home.fragment;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
+import android.support.design.widget.AppBarLayout;
+import android.support.design.widget.CollapsingToolbarLayout;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.recyclerview.widget.DividerItemDecoration;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.dev.eda.R;
 import com.dev.eda.app.base.BaseFragment;
+import com.dev.eda.app.base.OwnApplication;
 import com.dev.eda.app.camera.MyCamera;
 import com.dev.eda.app.chart.ChartsTool;
 import com.dev.eda.app.utils.Container;
-import com.dev.eda.app.utils.Logger;
+import com.dev.eda.app.utils.LoadPluginApkUtils;
 import com.dev.eda.frame.home.adapter.GlideImageLoader;
 import com.dev.eda.frame.home.adapter.HomeAdapter;
 import com.dev.eda.frame.home.listener.AppBarStateChangeListener;
@@ -35,9 +38,7 @@ import com.dev.eda.frame.home.model.Home;
 import com.dev.eda.frame.home.model.NeedToDo;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.data.Entry;
-import com.github.mikephil.charting.data.LineData;
-import com.google.android.material.appbar.AppBarLayout;
-import com.google.android.material.appbar.CollapsingToolbarLayout;
+import com.github.mikephil.charting.utils.Utils;
 import com.uuzuche.lib_zxing.activity.CodeUtils;
 import com.youth.banner.Banner;
 import com.youth.banner.BannerConfig;
@@ -75,6 +76,7 @@ public class HomeFragment extends BaseFragment {
 
     private List<Home> mHome = new ArrayList<>();
 
+    @SuppressLint("ValidFragment")
     private HomeFragment() {
     }
 
@@ -87,6 +89,7 @@ public class HomeFragment extends BaseFragment {
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
+        Utils.init(OwnApplication.getContext());
         super.onCreate(savedInstanceState);
     }
 
@@ -125,6 +128,20 @@ public class HomeFragment extends BaseFragment {
             EntryModel entryModel = new EntryModel();
             entryModel.setImageResource(R.drawable.shanghai);
             entryModel.setName("名称"+i);
+            if(i == 0){
+                entryModel.setPackageName(LoadPluginApkUtils.TOUR_PLUGIN_PACKAGE_NAME);
+                entryModel.setActivityName(LoadPluginApkUtils.TOUR_PLUGIN_LAUNCHER_ACTIVITY);
+                entryModel.setApkName(LoadPluginApkUtils.TOUR_PLUGIN_APK_NAME);
+                entryModel.setApkVersionKey(LoadPluginApkUtils.TOUR_PLUGIN_VERSION_KEY);
+                entryModel.setSdCardPath(LoadPluginApkUtils.TOUR_PLUGIN_SD_PATH);
+            }else if(i==1){
+                entryModel.setPackageName(LoadPluginApkUtils.WIFIDIS_PLUGIN_PACKAGE_NAME);
+                entryModel.setActivityName(LoadPluginApkUtils.WIFIDIS_PLUGIN_LAUNCHER_ACTIVITY);
+                entryModel.setApkName(LoadPluginApkUtils.WIFIDIS_PLUGIN_APK_NAME);
+                entryModel.setApkVersionKey(LoadPluginApkUtils.WIFIDIS_PLUGIN_VERSION_KEY);
+                entryModel.setSdCardPath(LoadPluginApkUtils.WIFIDIS_PLUGIN_SD_PATH);
+            }
+
             entryModels.add(entryModel);
         }
         home0.setEntryModels(entryModels);
@@ -206,8 +223,6 @@ public class HomeFragment extends BaseFragment {
         homeAdapter.setOnItemClickListener(new BaseQuickAdapter.OnItemClickListener() {
             @Override
             public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
-                Logger.d(mTag, "onItemClick: ");
-                Toast.makeText(getActivity(), "onItemClick" + position, Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(getActivity(), ChartsTool.class));
             }
         });

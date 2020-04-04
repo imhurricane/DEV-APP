@@ -1,10 +1,9 @@
 package com.dev.eda.frame.centre.fragment;
 
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.annotation.Nullable;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.dev.eda.R;
 import com.dev.eda.app.base.BaseFragment;

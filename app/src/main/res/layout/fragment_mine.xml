@@ -1,10 +1,11 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/lightDark"
     android:orientation="vertical">
 
-    <androidx.appcompat.widget.Toolbar
+    <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="5dp"
@@ -31,11 +32,12 @@
                 android:paddingRight="10dp">
 
                 <ImageView
+                    android:id="@+id/image_title"
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_gravity="center_vertical"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/shanghai" />
+                    app:srcCompat="@drawable/shanghai" />
 
                 <LinearLayout
                     android:layout_width="0dp"
@@ -80,7 +82,7 @@
                     <ImageView
                         android:layout_width="@dimen/dp_40"
                         android:layout_height="match_parent"
-                        android:src="@drawable/shanghai" />
+                        app:srcCompat="@drawable/shanghai" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -93,7 +95,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/go" />
+                        app:srcCompat="@drawable/go" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -108,7 +110,7 @@
                     <ImageView
                         android:layout_width="@dimen/dp_40"
                         android:layout_height="match_parent"
-                        android:src="@drawable/shanghai" />
+                        app:srcCompat="@drawable/shanghai" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -121,7 +123,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/go" />
+                        app:srcCompat="@drawable/go" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -136,7 +138,7 @@
                     <ImageView
                         android:layout_width="@dimen/dp_40"
                         android:layout_height="match_parent"
-                        android:src="@drawable/shanghai" />
+                        app:srcCompat="@drawable/shanghai" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -149,7 +151,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/go" />
+                        app:srcCompat="@drawable/go" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -164,7 +166,7 @@
                     <ImageView
                         android:layout_width="@dimen/dp_40"
                         android:layout_height="match_parent"
-                        android:src="@drawable/shanghai" />
+                        app:srcCompat="@drawable/shanghai" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -177,7 +179,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/go" />
+                        app:srcCompat="@drawable/go" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -192,7 +194,7 @@
                     <ImageView
                         android:layout_width="@dimen/dp_40"
                         android:layout_height="match_parent"
-                        android:src="@drawable/shanghai" />
+                        app:srcCompat="@drawable/shanghai" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -205,7 +207,7 @@
                     <ImageView
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@drawable/go" />
+                        app:srcCompat="@drawable/go" />
                 </LinearLayout>
 
                 <Button

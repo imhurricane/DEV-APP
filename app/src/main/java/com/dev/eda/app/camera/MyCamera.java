@@ -3,9 +3,8 @@ package com.dev.eda.app.camera;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.view.View;
-
-import androidx.annotation.Nullable;
 
 import com.dev.eda.R;
 import com.dev.eda.app.base.BaseActivity;

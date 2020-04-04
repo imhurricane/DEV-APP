@@ -4,14 +4,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.Configuration;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
+import android.support.v4.app.Fragment;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
 
 import com.dev.eda.R;
 import com.gyf.immersionbar.ImmersionBar;
@@ -24,15 +25,15 @@ public abstract class BaseFragment extends Fragment {
     protected String mTag = this.getClass().getSimpleName();
 
     private Unbinder unbinder;
-    protected Activity mActivity;
+    protected AppCompatActivity mActivity;
     protected View mRootView;
     protected Toolbar toolbar;
     protected View statusBarView;
 
     @Override
     public void onAttach(Context context) {
+        mActivity = (AppCompatActivity) context;
         super.onAttach(context);
-        mActivity = (Activity) context;
     }
 
     @Override
@@ -65,6 +66,7 @@ public abstract class BaseFragment extends Fragment {
         initData();
         initView();
         setListener();
+
     }
 
     @Override

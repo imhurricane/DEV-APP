@@ -9,6 +9,56 @@ public class EntryModel  {
 
     private String name;
 
+    private String packageName;
+
+    private String activityName;
+
+    private String apkName;
+
+    private String sdCardPath;
+
+    private String apkVersionKey;
+
+    public String getApkVersionKey() {
+        return apkVersionKey;
+    }
+
+    public void setApkVersionKey(String apkVersionKey) {
+        this.apkVersionKey = apkVersionKey;
+    }
+
+    public String getApkName() {
+        return apkName;
+    }
+
+    public void setApkName(String apkName) {
+        this.apkName = apkName;
+    }
+
+    public String getSdCardPath() {
+        return sdCardPath;
+    }
+
+    public void setSdCardPath(String sdCardPath) {
+        this.sdCardPath = sdCardPath;
+    }
+
+    public String getPackageName() {
+        return packageName;
+    }
+
+    public void setPackageName(String packageName) {
+        this.packageName = packageName;
+    }
+
+    public String getActivityName() {
+        return activityName;
+    }
+
+    public void setActivityName(String activityName) {
+        this.activityName = activityName;
+    }
+
     public String getImageUrl() {
         return imageUrl;
     }

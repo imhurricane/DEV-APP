@@ -1,8 +1,8 @@
 package com.dev.eda.frame.home.adapter;
 
-import android.app.Activity;
 import android.content.Context;
 import android.os.Build;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -22,7 +22,6 @@ public class GlideImageLoader extends ImageLoader {
 
         //Glide 加载图片简单用法
         Glide.with(context.getApplicationContext()).load(path).into(imageView);
-
     }
 
     //提供createImageView 方法，如果不用可以不重写这个方法，主要是方便自定义ImageView的创建
@@ -38,12 +37,8 @@ public class GlideImageLoader extends ImageLoader {
      * @param mActivity
      * @return
      */
-    public static boolean isDestroy(Activity mActivity) {
-        if (mActivity== null || mActivity.isFinishing() || (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && mActivity.isDestroyed())) {
-            return true;
-        } else {
-            return false;
-        }
+    public static boolean isDestroy(AppCompatActivity mActivity) {
+        return mActivity == null || mActivity.isFinishing() || (Build.VERSION.SDK_INT >= Build.VERSION_CODES.JELLY_BEAN_MR1 && mActivity.isDestroyed());
     }
 
 }

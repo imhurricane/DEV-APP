@@ -2,6 +2,9 @@ package com.dev.eda.frame.blog.adapter;
 
 import android.content.Context;
 import android.graphics.Rect;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MotionEvent;
@@ -12,10 +15,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -28,7 +27,7 @@ import com.dev.eda.frame.blog.model.BlogContent;
 
 import java.util.List;
 
-public class BlogContentAdapter extends BaseMultiItemQuickAdapter<BlogContent, BaseViewHolder> {
+public class BlogContentAdapter extends BaseMultiItemQuickAdapter<BlogContent,BaseViewHolder> {
 
     private Context mContext;
     private LikePopupWindow likePopupWindow;

@@ -7,7 +7,7 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.IBinder;
 import android.os.SystemClock;
-import androidx.annotation.Nullable;
+import android.support.annotation.Nullable;
 
 import com.dev.eda.R;
 

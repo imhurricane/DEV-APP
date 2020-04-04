@@ -2,25 +2,24 @@ package com.dev.eda.frame.login.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.support.annotation.Nullable;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import androidx.annotation.Nullable;
 
 import com.dev.eda.R;
 import com.dev.eda.app.base.BaseActivity;
 import com.dev.eda.app.utils.AppTool;
 import com.dev.eda.app.utils.HttpRequestUrl;
 import com.dev.eda.app.utils.JsonCallback;
-import com.dev.eda.app.utils.Logger;
 import com.dev.eda.frame.login.model.LoginUser;
 import com.dev.eda.frame.root.activity.MainActivity;
 import com.gyf.immersionbar.ImmersionBar;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.model.Response;
+
 
 import org.jetbrains.annotations.NotNull;
 
@@ -31,7 +30,7 @@ import model.UiConfig;
 import model.UpdateConfig;
 import update.UpdateAppUtils;
 
-public class LoginActivity extends BaseActivity {
+public class LoginActivity1 extends BaseActivity {
 
     @BindView(R.id.edit_login_name)
     EditText editLoginName;
@@ -66,7 +65,7 @@ public class LoginActivity extends BaseActivity {
 
     @Override
     protected void initView() {
-        tvAppVersionName.setText("版  本  号: " + AppTool.getAppVersionName(LoginActivity.this));
+        tvAppVersionName.setText("版  本  号: " + AppTool.getAppVersionName(LoginActivity1.this));
         tvAppVersion.setText("版权所有: Create By Hurricane");
     }
 
@@ -95,9 +94,9 @@ public class LoginActivity extends BaseActivity {
                                 LoginUser user = new LoginUser();
                                 user.updateAll("currentUserXtm = ''");
                                 response.body().save();
-                                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                                Intent intent = new Intent(LoginActivity1.this, MainActivity.class);
                                 startActivity(intent);
-                                LoginActivity.this.finish();
+                                LoginActivity1.this.finish();
                             }
                         });
             }

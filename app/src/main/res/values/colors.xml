@@ -1,39 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <color name="colorPrimary">#008577</color>
-    <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
-    <color name="cool_green_normal">#4caf50</color>
     <color name="lightDark">#F0F0F0</color>
-    <color name="black">#000000</color>
-    <color name="main_color">#0090f0</color>
     <color name="select">#3ca0ec</color>
     <color name="lightSkyBlue">#87CEFA</color>
     <color name="deepSkyBlue">#00BFFF</color>
     <color name="whiteSmoke">#F5F5F5</color>
     <color name="ghostWhite">#F8F8FF</color>
     <color name="lightGray">#D3D3D3</color>
-    <color name="azure">#F0FFFF</color>
     <color name="aliceBlue">#F0F8FF</color>
     <color name="light">#00000000</color>
+    <color name="black">#FF000000</color>
+    <color name="colorPrimaryDark">#00000000</color>
 
 
-    <color name="soft_1">#CCFF99</color>
     <color name="soft_2">#99CCFF</color>
-    <color name="soft_3">#99CCCC</color>
     <color name="soft_4">#CCFFCC</color>
-    <color name="soft_5">#66CCCC</color>
-    <color name="soft_6">#CCCCFF</color>
-    <color name="soft_7">#FFFFCC</color>
-    <color name="soft_8">#CCFFFF</color>
-    <color name="soft_9">#CCCCFF</color>
-    <color name="soft_10">#CCFFFF</color>
-    <color name="soft_11">#66CCFF</color>
-    <color name="soft_12">#6699CC</color>
 
+    <color name="clear">#00000000</color>
 
-    <color name="soft_21">#FFFFCC</color>
-    <color name="Black">#000000</color>
-
+    <color name="block">#D3D3D3</color>
 
 </resources>

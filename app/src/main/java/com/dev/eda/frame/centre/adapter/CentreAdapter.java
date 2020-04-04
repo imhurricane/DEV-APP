@@ -1,10 +1,9 @@
 package com.dev.eda.frame.centre.adapter;
 
 import android.content.Context;
-
-import androidx.annotation.NonNull;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
@@ -13,7 +12,7 @@ import com.dev.eda.frame.centre.model.Centre;
 
 import java.util.List;
 
-public class CentreAdapter extends BaseQuickAdapter<Centre, BaseViewHolder> {
+public class CentreAdapter extends BaseQuickAdapter<Centre,BaseViewHolder> {
 
     private Context mContext;
     private List<Centre> mData;

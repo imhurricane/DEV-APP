@@ -1,4 +1,4 @@
-<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -6,12 +6,12 @@
     android:background="@color/aliceBlue"
     android:orientation="vertical">
 
-    <com.google.android.material.appbar.AppBarLayout
+    <android.support.design.widget.AppBarLayout
         android:id="@+id/blog_app_bar"
         android:layout_width="match_parent"
         android:layout_height="200dp">
 
-        <com.google.android.material.appbar.CollapsingToolbarLayout
+        <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/blog_toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -36,7 +36,7 @@
                         android:layout_height="match_parent"
                         android:layout_marginBottom="25dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/shanghai" />
+                        app:srcCompat="@drawable/shanghai" />
 
                 </LinearLayout>
 
@@ -64,12 +64,12 @@
                         android:layout_height="80dp"
                         android:layout_marginEnd="30dp"
                         android:scaleType="centerCrop"
-                        android:src="@drawable/shanghai" />
+                        app:srcCompat="@drawable/shanghai" />
                 </LinearLayout>
 
             </RelativeLayout>
 
-            <androidx.appcompat.widget.Toolbar
+            <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"
@@ -87,7 +87,7 @@
                         android:layout_width="20dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical|left"
-                        android:src="@drawable/back" />
+                        app:srcCompat="@drawable/back" />
 
                     <TextView
                         android:layout_width="wrap_content"
@@ -102,19 +102,19 @@
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical|right"
-                        android:src="@drawable/xiangji" />
+                        app:srcCompat="@drawable/xiangji" />
                 </LinearLayout>
 
-            </androidx.appcompat.widget.Toolbar>
+            </android.support.v7.widget.Toolbar>
 
-        </com.google.android.material.appbar.CollapsingToolbarLayout>
+        </android.support.design.widget.CollapsingToolbarLayout>
 
-    </com.google.android.material.appbar.AppBarLayout>
+    </android.support.design.widget.AppBarLayout>
 
-    <androidx.recyclerview.widget.RecyclerView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="@string/appbar_scrolling_view_behavior" />
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+</android.support.design.widget.CoordinatorLayout>

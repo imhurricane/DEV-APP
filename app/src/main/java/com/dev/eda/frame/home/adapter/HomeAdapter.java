@@ -2,16 +2,31 @@ package com.dev.eda.frame.home.adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
-
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
+import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dev.eda.R;
+import com.dev.eda.app.base.OwnApplication;
 import com.dev.eda.app.chart.MyMarkerView;
+import com.dev.eda.app.utils.AppTool;
 import com.dev.eda.app.utils.ChartsTool;
+import com.dev.eda.app.utils.LoadPluginApkUtils;
+import com.dev.eda.app.utils.ViewUtils;
+import com.dev.eda.app.utils.WifiDisPluginUtils;
+import com.dev.eda.app.wifidis.utils.WifiDisUtil;
+import com.dev.eda.frame.blog.PopupWindow.LikePopupWindow;
+import com.dev.eda.frame.blog.PopupWindow.OnPraiseOrCommentClickListener;
+import com.dev.eda.frame.home.model.EntryModel;
 import com.dev.eda.frame.home.model.Home;
 import com.dev.eda.frame.root.activity.MainActivity;
 import com.github.mikephil.charting.charts.LineChart;
@@ -25,10 +40,8 @@ import com.github.mikephil.charting.data.LineDataSet;
 import java.util.ArrayList;
 import java.util.List;
 
-//import com.example.wyh.intelcheckbash.MainActivity;
 
-
-public class HomeAdapter extends BaseMultiItemQuickAdapter<Home, BaseViewHolder> {
+public class HomeAdapter extends BaseMultiItemQuickAdapter<Home,BaseViewHolder> {
 
     private Context mContext;
 
@@ -49,14 +62,28 @@ public class HomeAdapter extends BaseMultiItemQuickAdapter<Home, BaseViewHolder>
             case Home.itemType_grid:
                 RecyclerView view = helper.getView(R.id.item_grid_recycle);
                 view.setLayoutManager(new GridLayoutManager(mContext,4,GridLayoutManager.VERTICAL,false));
-                view.setAdapter(new HomeGridRecycleViewAdapter(R.layout.item_grid,item.getEntryModels(),mContext));
-                view.setOnClickListener(new View.OnClickListener() {
+
+                HomeGridRecycleViewAdapter homeGridRecycleViewAdapter = new HomeGridRecycleViewAdapter(R.layout.item_grid, item.getEntryModels(),mContext);
+                view.addItemDecoration(new SpaceItemDecoration(50));
+                view.setNestedScrollingEnabled(false);//禁用滑动事件
+
+                homeGridRecycleViewAdapter.setOnItemClickListener(new OnItemClickListener() {
                     @Override
-                    public void onClick(View v) {
-                        Intent intent = new Intent(mContext, MainActivity.class);
-                        mContext.startActivity(intent);
+                    public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
+                        Log.e("position",position+"");
+                        EntryModel entryModel = item.getEntryModels().get(position);
+                        Log.e("entryModel.getApkName",entryModel.getApkName());
+                        LoadPluginApkUtils.checkPluginApkVersion(mContext,entryModel.getSdCardPath(),entryModel.getApkName(),entryModel.getApkVersionKey(),entryModel.getPackageName(),entryModel.getActivityName());
                     }
                 });
+                homeGridRecycleViewAdapter.setOnItemLongClickListener(new OnItemLongClickListener() {
+                    @Override
+                    public boolean onItemLongClick(BaseQuickAdapter adapter, View view, int position) {
+
+                        return false;
+                    }
+                });
+                view.setAdapter(homeGridRecycleViewAdapter);
                 break;
             case Home.itemType_card:
                 helper.setImageResource(R.id.iv_avatar, item.getNeedToDo().getResourceId());

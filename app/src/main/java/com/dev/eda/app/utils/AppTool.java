@@ -5,20 +5,20 @@ import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Build;
+import android.support.v7.app.AlertDialog;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
-import androidx.annotation.RequiresApi;
-import androidx.appcompat.app.AlertDialog;
 
 import com.dev.eda.R;
 import com.dev.eda.frame.login.model.LoginUser;
 
 import org.litepal.LitePal;
 
+import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.Base64;
 import java.util.Date;
@@ -29,7 +29,6 @@ public class AppTool {
 
     public static int LoginLost = 1;
 
-
     public static String encodeByMd5(String string) {
         try{
             // 确定计算方法
@@ -37,7 +36,7 @@ public class AppTool {
             Base64.Encoder base64Encoder = null;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                 base64Encoder = Base64.getEncoder();
-                return base64Encoder.encodeToString(md5.digest(string.getBytes("utf-8")));
+                return base64Encoder.encodeToString(md5.digest(string.getBytes(StandardCharsets.UTF_8)));
             }else{
                 return string;
             }
@@ -99,9 +98,9 @@ public class AppTool {
                 })
                 .setNegativeButton("", null).show();
 
-        TextView alert_title = (TextView) layout.findViewById(R.id.promot_alert_title);
+        TextView alert_title = layout.findViewById(R.id.promot_alert_title);
         alert_title.setText(msg);
-        Button confirm = (Button) layout.findViewById(R.id.promot_confirm);
+        Button confirm = layout.findViewById(R.id.promot_confirm);
         confirm.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

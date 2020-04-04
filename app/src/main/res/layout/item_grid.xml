@@ -5,14 +5,18 @@
     android:layout_gravity="center_vertical"
     android:gravity="center_horizontal"
     android:layout_height="60dp"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true">
 
-    <ImageView
+    <com.dev.eda.app.image.RoundImageView
         android:layout_weight="1"
         android:id="@+id/iv_grid"
-        android:layout_width="80dp"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:src="@drawable/shanghai" />
+        android:scaleType="centerCrop"
+        app:srcCompat="@drawable/shanghai" />
 
     <TextView
         android:id="@+id/tv_grid"

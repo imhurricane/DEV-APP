@@ -4,24 +4,27 @@ import android.app.Application;
 import android.app.Notification;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Handler;
+import android.os.Process;
+import android.support.multidex.MultiDexApplication;
+import android.util.Log;
 
 import com.dev.eda.R;
 import com.dev.eda.app.crash.CrashProtectManager;
 import com.dev.eda.app.helper.ContextHelper;
 import com.dev.eda.app.service.DeskService;
 import com.dev.eda.app.utils.Logger;
-import com.dev.eda.frame.root.activity.MainActivity;
+import com.didi.virtualapk.PluginManager;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheEntity;
 import com.lzy.okgo.cache.CacheMode;
 import com.lzy.okgo.cookie.CookieJarImpl;
-import com.lzy.okgo.cookie.store.DBCookieStore;
-import com.lzy.okgo.cookie.store.MemoryCookieStore;
 import com.lzy.okgo.cookie.store.SPCookieStore;
 import com.lzy.okgo.https.HttpsUtils;
 import com.lzy.okgo.interceptor.HttpLoggingInterceptor;
 import com.lzy.okgo.model.HttpHeaders;
 import com.lzy.okgo.model.HttpParams;
+import com.lzy.okgo.model.Progress;
 import com.uuzuche.lib_zxing.activity.ZXingLibrary;
 
 import org.litepal.LitePal;
@@ -33,7 +36,7 @@ import cn.jpush.android.api.BasicPushNotificationBuilder;
 import cn.jpush.android.api.JPushInterface;
 import okhttp3.OkHttpClient;
 
-public class OwnApplication extends Application {
+public class OwnApplication extends MultiDexApplication {
 
     //全局Context
     private static Context sContext;
@@ -45,6 +48,31 @@ public class OwnApplication extends Application {
         CrashProtectManager.getInstance(this).init();
         //全局Context获取类
         ContextHelper.getInstance().init(this);
+        new Thread(){
+            @Override
+            public void run() {
+                super.run();
+                Process.setThreadPriority(Process.THREAD_PRIORITY_BACKGROUND);
+                init();
+            }
+        }.start();
+
+    }
+
+    @Override
+    protected void attachBaseContext(Context base) {
+        super.attachBaseContext(base);
+        PluginManager.getInstance(base).init();
+        Log.e("attachBaseContext", "attachBaseContext，执行完毕");
+    }
+
+
+    public static Context getContext() {
+        return sContext;
+    }
+
+    private void init() {
+
 
         //初始化数据库
         LitePal.initialize(this);
@@ -56,7 +84,7 @@ public class OwnApplication extends Application {
         JPushInterface.init(getApplicationContext());//init初始化SDK
         //获取RegistrationID唯一标识
         String rid = JPushInterface.getRegistrationID(getApplicationContext());
-        Logger.e("rid",rid);
+        Logger.e("rid", rid);
         BasicPushNotificationBuilder jpushBuilder = new BasicPushNotificationBuilder(getApplicationContext());
         jpushBuilder.statusBarDrawable = R.drawable.jpush_notification_icon;
         jpushBuilder.notificationFlags = Notification.FLAG_AUTO_CANCEL
@@ -69,7 +97,7 @@ public class OwnApplication extends Application {
         startService(new Intent(this, DeskService.class));
 
         //初始化okgo网络组件
-        OkGo.getInstance().init(this);
+//        OkGo.getInstance().init(this);
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor("OkGo");
         //log打印级别，决定了log显示的详细程度
@@ -89,24 +117,19 @@ public class OwnApplication extends Application {
         HttpsUtils.SSLParams sslParams1 = HttpsUtils.getSslSocketFactory();
 
         HttpHeaders headers = new HttpHeaders();
-        headers.put("commonHeaderKey1", "commonHeaderValue1");    //header不支持中文，不允许有特殊字符
-        headers.put("commonHeaderKey2", "commonHeaderValue2");
+        headers.put("Content-type", "application/json");    //header不支持中文，不允许有特殊字符
+//        headers.put("commonHeaderKey2", "commonHeaderValue2");
         HttpParams params = new HttpParams();
-        params.put("commonParamsKey1", "commonParamsValue1");     //param支持中文,直接传,不要自己编码
-        params.put("commonParamsKey2", "这里支持中文参数");
+//        params.put("commonParamsKey1", "commonParamsValue1");     //param支持中文,直接传,不要自己编码
+//        params.put("commonParamsKey2", "这里支持中文参数");
 
         OkGo.getInstance().init(this)                       //必须调用初始化
                 .setOkHttpClient(builder.build())               //建议设置OkHttpClient，不设置将使用默认的
                 .setCacheMode(CacheMode.NO_CACHE)               //全局统一缓存模式，默认不使用缓存，可以不传
                 .setCacheTime(CacheEntity.CACHE_NEVER_EXPIRE)   //全局统一缓存时间，默认永不过期，可以不传
-                .setRetryCount(3);                           //全局统一超时重连次数，默认为三次，那么最差的情况会请求4次(一次原始请求，三次重连请求)，不需要可以设置为0
-//                .addCommonHeaders(headers)                      //全局公共头
+                .setRetryCount(3)                          //全局统一超时重连次数，默认为三次，那么最差的情况会请求4次(一次原始请求，三次重连请求)，不需要可以设置为0
+                .addCommonHeaders(headers);                     //全局公共头
 //                .addCommonParams(params);                       //全局公共参数
 
-
-    }
-
-    public static Context getContext() {
-        return sContext;
     }
 }

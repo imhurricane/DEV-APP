@@ -1,1 +1,1 @@
-include ':app', ':tour'
+include ':app'

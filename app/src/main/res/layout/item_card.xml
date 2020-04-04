@@ -16,7 +16,7 @@
         android:layout_width="90dp"
         android:layout_height="match_parent"
         android:scaleType="centerCrop"
-        android:src="@drawable/shanghai" />
+        app:srcCompat="@drawable/shanghai" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -28,7 +28,7 @@
             android:layout_width="@dimen/dp_10"
             android:layout_height="match_parent"
             android:gravity="center_vertical"
-            android:src="@drawable/dark_point" />
+            app:srcCompat="@drawable/dark_point" />
 
         <TextView
             android:id="@+id/tv_name"
@@ -47,13 +47,13 @@
             android:layout_width="40dp"
             android:layout_height="match_parent"
             android:layout_gravity="right"
-            android:src="@drawable/green_point" />
+            app:srcCompat="@drawable/green_point" />
 
         <ImageView
             android:layout_width="20dp"
             android:layout_height="match_parent"
             android:layout_gravity="left"
-            android:src="@drawable/go" />
+            app:srcCompat="@drawable/go" />
     </LinearLayout>
 
 </LinearLayout>

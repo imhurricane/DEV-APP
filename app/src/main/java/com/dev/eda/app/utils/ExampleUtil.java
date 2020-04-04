@@ -31,9 +31,7 @@ public class ExampleUtil {
             return true;
         if (s.length() == 0)
             return true;
-        if (s.trim().length() == 0)
-            return true;
-        return false;
+        return s.trim().length() == 0;
     }
     /**
      * 只能以 “+” 或者 数字开头；后面的内容只能包含 “-” 和 数字。
