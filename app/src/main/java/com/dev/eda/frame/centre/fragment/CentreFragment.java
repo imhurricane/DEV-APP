@@ -4,12 +4,13 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
 
 import com.dev.eda.R;
 import com.dev.eda.app.base.BaseFragment;
 import com.dev.eda.frame.centre.adapter.CentreAdapter;
 import com.dev.eda.frame.centre.model.Centre;
-import com.dev.eda.frame.home.model.EntryModel;
+import com.dev.eda.frame.home.model.PluginModel;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +33,15 @@ public class CentreFragment extends BaseFragment {
         return mInstance;
     }
 
+
+    @Override
+    public void setMenuVisibility(boolean menuVisible) {
+        super.setMenuVisibility(menuVisible);
+//        if(this.getView() != null){
+//            this.getView().setVisibility(menuVisible ? View.VISIBLE : View.GONE);
+//        }
+    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,9 +57,9 @@ public class CentreFragment extends BaseFragment {
     protected void initData() {
         for (int i = 0; i < 4; i++) {
             Centre centre = new Centre();
-            List<EntryModel> entryModels = new ArrayList();
+            List<PluginModel> entryModels = new ArrayList();
             for (int j = 0; j < 7; j++) {
-                EntryModel entryModel = new EntryModel();
+                PluginModel entryModel = new PluginModel();
                 entryModel.setImageResource(R.drawable.shanghai);
                 entryModel.setName("name"+j);
                 entryModels.add(entryModel);

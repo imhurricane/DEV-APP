@@ -1,6 +1,6 @@
 package com.dev.eda.frame.centre.model;
 
-import com.dev.eda.frame.home.model.EntryModel;
+import com.dev.eda.frame.home.model.PluginModel;
 
 import java.util.List;
 
@@ -8,7 +8,7 @@ public class Centre {
 
     private String title;
 
-    private List<EntryModel> entryModelList;
+    private List<PluginModel> entryModelList;
 
     public String getTitle() {
         return title;
@@ -18,11 +18,11 @@ public class Centre {
         this.title = title;
     }
 
-    public List<EntryModel> getEntryModelList() {
+    public List<PluginModel> getEntryModelList() {
         return entryModelList;
     }
 
-    public void setEntryModelList(List<EntryModel> entryModelList) {
+    public void setEntryModelList(List<PluginModel> entryModelList) {
         this.entryModelList = entryModelList;
     }
 }

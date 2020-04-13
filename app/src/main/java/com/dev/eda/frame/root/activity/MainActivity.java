@@ -31,6 +31,8 @@ import com.dev.eda.frame.login.activity.LoginActivity1;
 import com.dev.eda.frame.root.adapter.TabFragmentPagerAdapter;
 
 
+import java.util.Objects;
+
 import butterknife.BindView;
 import cn.jpush.android.api.JPushInterface;
 
@@ -57,13 +59,6 @@ public class MainActivity extends BaseActivity {
             if (lacksPermissions(PERMISSIONS)) {            // 开始请求权限
                 requestPermissions(PERMISSIONS);
             }
-
-            boolean login = AppTool.checkLogin();
-            if (!login) {
-                Intent intent = new Intent(MainActivity.this, LoginActivity1.class);
-//            startActivity(intent);
-//            MainActivity.this.finish();
-            }
         }
     };
 
@@ -87,6 +82,12 @@ public class MainActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTheme(R.style.AppTheme);
+        boolean login = AppTool.checkLogin();
+        if (!login) {
+            Intent intent = new Intent(MainActivity.this, LoginActivity1.class);
+//            startActivity(intent);
+//            MainActivity.this.finish();
+        }
         getWindow().getDecorView().post(new Runnable() {
             @Override
             public void run() {
@@ -112,7 +113,7 @@ public class MainActivity extends BaseActivity {
         tabLayout.setupWithViewPager(viewPager);
 
         for (int i = 0; i < tabLayout.getTabCount(); i++) {
-            tabLayout.getTabAt(i).setCustomView(getTabView(i));
+            Objects.requireNonNull(tabLayout.getTabAt(i)).setCustomView(getTabView(i));
         }
 
     }

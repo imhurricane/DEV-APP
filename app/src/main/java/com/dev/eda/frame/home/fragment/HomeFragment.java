@@ -6,6 +6,9 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.os.Message;
 import android.support.annotation.Nullable;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
@@ -33,7 +36,7 @@ import com.dev.eda.frame.home.adapter.GlideImageLoader;
 import com.dev.eda.frame.home.adapter.HomeAdapter;
 import com.dev.eda.frame.home.listener.AppBarStateChangeListener;
 import com.dev.eda.frame.home.model.ChartModel;
-import com.dev.eda.frame.home.model.EntryModel;
+import com.dev.eda.frame.home.model.PluginModel;
 import com.dev.eda.frame.home.model.Home;
 import com.dev.eda.frame.home.model.NeedToDo;
 import com.github.mikephil.charting.components.Description;
@@ -76,10 +79,6 @@ public class HomeFragment extends BaseFragment {
 
     private List<Home> mHome = new ArrayList<>();
 
-    @SuppressLint("ValidFragment")
-    private HomeFragment() {
-    }
-
     public static HomeFragment getInstance() {
         if (null == mInstance) {
             mInstance = new HomeFragment();
@@ -87,10 +86,18 @@ public class HomeFragment extends BaseFragment {
         return mInstance;
     }
 
+//    @Override
+//    public void setMenuVisibility(boolean menuVisible) {
+//        super.setMenuVisibility(menuVisible);
+//        if(this.getView() != null){
+//            this.getView().setVisibility(menuVisible ? View.VISIBLE : View.GONE);
+//        }
+//    }
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-        Utils.init(OwnApplication.getContext());
         super.onCreate(savedInstanceState);
+        Utils.init(OwnApplication.getContext());
     }
 
     @Override
@@ -123,9 +130,9 @@ public class HomeFragment extends BaseFragment {
         initBanner();
 
         Home home0 = new Home(Home.itemType_grid);
-        List<EntryModel> entryModels = new ArrayList<>();
+        List<PluginModel> entryModels = new ArrayList<>();
         for (int i = 0; i < 6; i++) {
-            EntryModel entryModel = new EntryModel();
+            PluginModel entryModel = new PluginModel();
             entryModel.setImageResource(R.drawable.shanghai);
             entryModel.setName("名称"+i);
             if(i == 0){
@@ -208,7 +215,6 @@ public class HomeFragment extends BaseFragment {
             }
         });
         createGridManager();
-
     }
 
     private void createGridManager() {

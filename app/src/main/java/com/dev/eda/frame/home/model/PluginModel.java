@@ -1,7 +1,7 @@
 package com.dev.eda.frame.home.model;
 
 
-public class EntryModel  {
+public class PluginModel {
 
     private int imageResource;
 
@@ -18,6 +18,26 @@ public class EntryModel  {
     private String sdCardPath;
 
     private String apkVersionKey;
+
+    private String versionCode;
+
+    private boolean newVersion;
+
+    public boolean getNewVersion() {
+        return newVersion;
+    }
+
+    public void setNewVersion(boolean newVersion) {
+        this.newVersion = newVersion;
+    }
+
+    public String getVersionCode() {
+        return versionCode;
+    }
+
+    public void setVersionCode(String versionCode) {
+        this.versionCode = versionCode;
+    }
 
     public String getApkVersionKey() {
         return apkVersionKey;

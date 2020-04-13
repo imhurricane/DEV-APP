@@ -72,6 +72,7 @@
                 android:orientation="vertical">
 
                 <LinearLayout
+                    android:id="@+id/alert_layout"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:background="@color/whiteSmoke"
@@ -90,7 +91,7 @@
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:paddingLeft="20dp"
-                        android:text="修改密码" />
+                        android:text="提示框" />
 
                     <ImageView
                         android:layout_width="wrap_content"
@@ -99,6 +100,7 @@
                 </LinearLayout>
 
                 <LinearLayout
+                    android:id="@+id/download"
                     android:layout_width="match_parent"
                     android:layout_height="60dp"
                     android:layout_marginTop="5dp"
@@ -118,7 +120,7 @@
                         android:layout_weight="1"
                         android:gravity="center_vertical"
                         android:paddingLeft="20dp"
-                        android:text="修改密码" />
+                        android:text="下载进度框" />
 
                     <ImageView
                         android:layout_width="wrap_content"

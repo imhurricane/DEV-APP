@@ -26,8 +26,6 @@ public class TabFragmentPagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         switch (position) {
-            case 0:
-                return HomeFragment.getInstance();
             case 1:
                 return CentreFragment.getInstance();
             case 2:

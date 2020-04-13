@@ -45,15 +45,20 @@ public class BlogFragment extends BaseFragment {
 
     private List<Blog> blogList;
 
-    @SuppressLint("ValidFragment")
-    private BlogFragment() {
-    }
-
     public static BlogFragment getInstance() {
         if (null == mInstance) {
             mInstance = new BlogFragment();
         }
         return mInstance;
+    }
+
+
+    @Override
+    public void setMenuVisibility(boolean menuVisible) {
+        super.setMenuVisibility(menuVisible);
+//        if(this.getView() != null){
+//            this.getView().setVisibility(menuVisible ? View.VISIBLE : View.GONE);
+//        }
     }
 
     @Override

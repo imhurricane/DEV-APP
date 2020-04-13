@@ -1,8 +1,11 @@
 package com.dev.eda.app.base;
 
-import android.app.Activity;
+import android.annotation.SuppressLint;
+import android.app.Dialog;
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -12,7 +15,6 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 
 import com.dev.eda.R;
 import com.gyf.immersionbar.ImmersionBar;
@@ -56,6 +58,7 @@ public abstract class BaseFragment extends Fragment {
         return mRootView;
     }
 
+    @SuppressLint("StaticFieldLeak")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -66,7 +69,6 @@ public abstract class BaseFragment extends Fragment {
         initData();
         initView();
         setListener();
-
     }
 
     @Override
@@ -121,4 +123,5 @@ public abstract class BaseFragment extends Fragment {
             ImmersionBar.setTitleBar(this, toolbar);
         }
     }
+
 }

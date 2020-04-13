@@ -15,17 +15,17 @@ public class Home implements MultiItemEntity {
 
     private int itemType;
 
-    private List<EntryModel> entryModels;
+    private List<PluginModel> entryModels;
 
     private NeedToDo needToDo;
 
     private ChartModel chartModel;
 
-    public List<EntryModel> getEntryModels() {
+    public List<PluginModel> getEntryModels() {
         return entryModels;
     }
 
-    public void setEntryModels(List<EntryModel> entryModels) {
+    public void setEntryModels(List<PluginModel> entryModels) {
         this.entryModels = entryModels;
     }
 

@@ -121,6 +121,14 @@ dependencies {
     implementation 'com.android.support:multidex:1.0.3'
     implementation 'com.android.support:multidex-instrumentation:1.0.3'
 
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:1.6.3'
+    releaseImplementation 'com.squareup.leakcanary:leakcanary-android-no-op:1.6.3'
+
+    //BaseDialog  左右抽屉  底部打开等
+//    implementation 'com.github.AnJiaoDe:BaseDialog:V1.1.8'
+
+    implementation 'com.kongzue.dialog_v3:dialog:3.1.8'
+
 }
 configurations {
 //    all*.exclude group: 'androidx.arch.core'

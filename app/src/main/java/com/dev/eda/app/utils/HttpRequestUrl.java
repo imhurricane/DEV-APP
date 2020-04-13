@@ -2,13 +2,17 @@ package com.dev.eda.app.utils;
 
 public class HttpRequestUrl {
 
-    public static String BaseURL = "http://192.168.2.104:7001";
+    public static String BaseURI = "http://192.168.1.170:7001";
 
-    public static String UpdateAppUrl = BaseURL + "/apk/app-release.apk";
+    private static String BaseURL = BaseURI + "/appservlet/?requestdir=app.http&requesttype=";
 
-    public static String LoginAppUrl = BaseURL + "/userInfo/loginApp";
+    public static String UpdateAppUrl = BaseURI + "/apk/app-release.apk";
 
-    public static String CheckWifiApkVerUrl = BaseURL + "/appservlet/";
+    public static String LoginAppUrl = BaseURL + "loginApp";
 
-    public static String DownloadWifiApkUrl = BaseURL + "/apk/";
+    public static String CheckPluginApkVersionUrl = BaseURL + "CheckPluginApkVersion";
+
+    public static String DownloadPluginApkUrl = BaseURI + "/apk/";
+
+
 }

@@ -137,7 +137,7 @@ public class LoginActivity1 extends BaseActivity {
                                 tvSure.setText("立即更新");
                             }
                         }).update();
-//                UpdateAppUtils.getInstance().deleteInstalledApk();
+                UpdateAppUtils.getInstance().deleteInstalledApk();
             }
         });
     }

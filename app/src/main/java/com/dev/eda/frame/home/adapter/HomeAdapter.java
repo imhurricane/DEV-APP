@@ -1,34 +1,20 @@
 package com.dev.eda.frame.home.adapter;
 
 import android.content.Context;
-import android.content.Intent;
-import android.os.Handler;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
-import android.widget.LinearLayout;
-import android.widget.TextView;
-import android.widget.Toast;
 
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dev.eda.R;
-import com.dev.eda.app.base.OwnApplication;
 import com.dev.eda.app.chart.MyMarkerView;
-import com.dev.eda.app.utils.AppTool;
 import com.dev.eda.app.utils.ChartsTool;
 import com.dev.eda.app.utils.LoadPluginApkUtils;
-import com.dev.eda.app.utils.ViewUtils;
-import com.dev.eda.app.utils.WifiDisPluginUtils;
-import com.dev.eda.app.wifidis.utils.WifiDisUtil;
-import com.dev.eda.frame.blog.PopupWindow.LikePopupWindow;
-import com.dev.eda.frame.blog.PopupWindow.OnPraiseOrCommentClickListener;
-import com.dev.eda.frame.home.model.EntryModel;
+import com.dev.eda.frame.home.model.PluginModel;
 import com.dev.eda.frame.home.model.Home;
-import com.dev.eda.frame.root.activity.MainActivity;
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.Description;
 import com.github.mikephil.charting.components.Legend;
@@ -71,7 +57,7 @@ public class HomeAdapter extends BaseMultiItemQuickAdapter<Home,BaseViewHolder> 
                     @Override
                     public void onItemClick(BaseQuickAdapter adapter, View view, int position) {
                         Log.e("position",position+"");
-                        EntryModel entryModel = item.getEntryModels().get(position);
+                        PluginModel entryModel = item.getEntryModels().get(position);
                         Log.e("entryModel.getApkName",entryModel.getApkName());
                         LoadPluginApkUtils.checkPluginApkVersion(mContext,entryModel.getSdCardPath(),entryModel.getApkName(),entryModel.getApkVersionKey(),entryModel.getPackageName(),entryModel.getActivityName());
                     }
