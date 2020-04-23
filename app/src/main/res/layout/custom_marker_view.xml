@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="40dp"
-    android:background="@color/soft_2"
+    android:background="@color/dev_light_blue_color"
     tools:ignore="Overdraw">
 
     <TextView

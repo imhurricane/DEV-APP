@@ -1,57 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content">
+
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="460px"
-        android:orientation="vertical"
-        android:background="@drawable/dialog_back_ground">
+        android:background="@drawable/dialog_back_ground"
+        android:orientation="vertical">
+
         <TextView
             android:id="@+id/progress_message"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textSize="44px"
-            android:layout_marginTop="113px"
             android:layout_gravity="center_horizontal"
+            android:layout_marginTop="113px"
             android:textColor="#ffffff"
-            />
+            android:textSize="44px" />
+
         <ProgressBar
             android:id="@+id/progress"
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
             android:layout_height="30px"
-            android:layout_marginTop="100px"
-            android:layout_marginLeft="47px"
-            android:layout_marginRight="47px"
             android:layout_centerHorizontal="true"
-            android:progressDrawable="@drawable/progress_layer_list"
-            />
+            android:layout_marginLeft="47px"
+            android:layout_marginTop="100px"
+            android:layout_marginRight="47px"
+            android:progressDrawable="@drawable/progress_layer_list" />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            >
+            android:orientation="horizontal">
+
             <TextView
                 android:id="@+id/progress_percent"
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:textSize="30px"
                 android:layout_marginLeft="260px"
                 android:gravity="center_horizontal"
                 android:textColor="#ffffff"
-                />
+                android:textSize="30px" />
+
             <TextView
                 android:id="@+id/progress_number"
                 android:layout_width="250px"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="110px"
-                android:textSize="30px"
                 android:gravity="center_horizontal"
                 android:textColor="#ffffff"
-                />
+                android:textSize="30px" />
         </LinearLayout>
+
+        <Button
+            android:id="@+id/ok_button"
+            android:layout_width="80dp"
+            android:layout_height="26dp"
+            android:layout_gravity="center_horizontal|center_vertical"
+            android:gravity="center_vertical|center_horizontal"
+            android:text="确认"
+            android:textSize="20dp"
+            android:background="@drawable/dialog_btn_bg"
+            android:textColor="@color/dev_bf_bg_color"/>
+
     </LinearLayout>
 </FrameLayout>

@@ -3,7 +3,7 @@
 
     <dbname value="edaDataBase" />
 
-    <version value="2" />
+    <version value="4" />
 
     <list>
         <!--用户-->

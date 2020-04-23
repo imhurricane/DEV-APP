@@ -1,6 +1,8 @@
 package com.dev.eda.frame.blog.activity;
 
 import android.content.Intent;
+import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
@@ -38,6 +40,12 @@ public class BigImageActivity extends BaseActivity {
     @Override
     protected int getLayoutId() {
         return R.layout.activity_big_image;
+    }
+
+    @Override
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        overridePendingTransition(R.anim.image_activity_start,0);
     }
 
     @Override
@@ -100,6 +108,12 @@ public class BigImageActivity extends BaseActivity {
     @Override
     public void initData() {
 
+    }
+
+    @Override
+    public void finish() {
+        super.finish();
+//            overridePendingTransition(R.anim.image_activity_finish,0);
     }
 }
 

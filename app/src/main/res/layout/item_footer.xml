@@ -9,7 +9,7 @@
         android:layout_height="match_parent"
         android:gravity="center_vertical|center_horizontal"
         android:textSize="20sp"
-        android:textColor="@color/lightGray"
+        android:textColor="@color/dev_light_gray_color"
         android:text="----------我是有底线的----------" />
 
 

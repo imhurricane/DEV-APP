@@ -9,6 +9,7 @@ import com.dev.eda.R;
 import com.dev.eda.app.crash.CrashProtectManager;
 import com.dev.eda.app.helper.ContextHelper;
 import com.dev.eda.app.service.DeskService;
+import com.dev.eda.app.utils.AlertSetting;
 import com.dev.eda.app.utils.Logger;
 import com.didi.virtualapk.PluginManager;
 import com.lzy.okgo.OkGo;
@@ -96,6 +97,7 @@ public class OwnApplication extends MultiDexApplication {
         loggingInterceptor.setPrintLevel(HttpLoggingInterceptor.Level.BODY);
         //log颜色级别，决定了log在控制台显示的颜色
         loggingInterceptor.setColorLevel(Level.INFO);
+
         builder.addInterceptor(loggingInterceptor);
         //全局的读取超时时间
         builder.readTimeout(OkGo.DEFAULT_MILLISECONDS, TimeUnit.MILLISECONDS);
@@ -122,7 +124,10 @@ public class OwnApplication extends MultiDexApplication {
                 .setRetryCount(3)                          //全局统一超时重连次数，默认为三次，那么最差的情况会请求4次(一次原始请求，三次重连请求)，不需要可以设置为0
                 .addCommonHeaders(headers);                     //全局公共头
 //                .addCommonParams(params);                       //全局公共参数
+
         setupLeakCanary();
+
+        AlertSetting.init(sContext);
     }
 
     //初始化LeakCanary
@@ -132,4 +137,5 @@ public class OwnApplication extends MultiDexApplication {
         }
         LeakCanary.install(this);
     }
+
 }

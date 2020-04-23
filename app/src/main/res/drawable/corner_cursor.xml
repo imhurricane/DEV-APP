@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!--  输入框的光标颜色  -->
+    <size android:width="0.8dp" />
+    <solid android:color="@color/dev_light_blue_color" />
+</shape>

@@ -1,50 +1,43 @@
 <android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
         android:id="@+id/MergeRootFrame"
-        android:background="@color/aliceBlue"
         android:layout_width="match_parent"
-        android:layout_height="200dp">
+        android:layout_height="?attr/actionBarSize">
 
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:contentScrim="@color/soft_2"
+            app:contentScrim="@color/dev_light_blue_color"
             app:layout_scrollFlags="scroll|exitUntilCollapsed|snap"
             app:toolbarId="@+id/toolbar">
-
-            <com.youth.banner.Banner
-                android:id="@+id/banner"
-                app:layout_collapseMode="none"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"></com.youth.banner.Banner>
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
-                android:layout_height="?attr/actionBarSize"
+                android:layout_height="match_parent"
                 android:layout_below="@+id/view"
-                app:layout_collapseMode="pin">
+                app:layout_collapseMode="pin"
+                android:background="@color/dev_title_color">
 
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_marginRight="20dp">
+                    android:layout_marginEnd="20dp"
+                    android:orientation="horizontal">
 
                     <LinearLayout
                         android:id="@+id/mainLinear"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="30dp"
-                        android:layout_weight="4"
                         android:layout_gravity="center_vertical"
-                        android:background="#4D666666"
+                        android:layout_weight="4"
+                        android:background="@color/dev_bf_bg_color"
                         android:orientation="horizontal">
 
                         <TextView
@@ -52,11 +45,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="match_parent"
                             android:background="@null"
-                            android:gravity="left|center_vertical"
+                            android:gravity="start|center_vertical"
                             android:orientation="horizontal"
-                            android:paddingLeft="10dp"
+                            android:paddingStart="10dp"
                             android:text="EMS"
-                            android:textColor="#FFFFFF"
+                            android:textColor="@color/dev_column_name_color"
                             android:textSize="18sp" />
                     </LinearLayout>
 
@@ -64,18 +57,18 @@
                         android:id="@+id/saoyisao"
                         android:layout_width="38dp"
                         android:layout_height="35dp"
+                        android:layout_gravity="center_vertical"
                         android:paddingStart="5dp"
                         android:scaleType="fitXY"
-                        android:layout_gravity="center_vertical"
                         app:srcCompat="@drawable/saoyisao" />
 
                     <ImageView
                         android:id="@+id/youjian"
                         android:layout_width="38dp"
                         android:layout_height="35dp"
+                        android:layout_gravity="center_vertical"
                         android:paddingStart="5dp"
                         android:scaleType="fitXY"
-                        android:layout_gravity="center_vertical"
                         app:srcCompat="@drawable/youjian1" />
                 </LinearLayout>
             </android.support.v7.widget.Toolbar>
@@ -84,14 +77,25 @@
 
     </android.support.design.widget.AppBarLayout>
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/home_recycler"
-        android:paddingTop="20dp"
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
+        android:id="@+id/home_fragment_refreshLayout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/aliceBlue"
+        android:background="@color/dev_light_gray_color"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
-    </android.support.v7.widget.RecyclerView>
+        <com.scwang.smartrefresh.layout.header.ClassicsHeader
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"/>
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/home_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/dev_light_bg_color"
+            app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
 
 </android.support.design.widget.CoordinatorLayout>

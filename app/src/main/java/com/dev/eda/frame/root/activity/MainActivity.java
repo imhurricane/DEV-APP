@@ -27,8 +27,9 @@ import com.dev.eda.app.receiver.LocalBroadcastManager;
 import com.dev.eda.app.utils.AppTool;
 import com.dev.eda.app.utils.ExampleUtil;
 import com.dev.eda.app.utils.Logger;
-import com.dev.eda.frame.login.activity.LoginActivity1;
+import com.dev.eda.frame.login.activity.LoginActivity;
 import com.dev.eda.frame.root.adapter.TabFragmentPagerAdapter;
+import com.gyf.immersionbar.ImmersionBar;
 
 
 import java.util.Objects;
@@ -42,7 +43,6 @@ public class MainActivity extends BaseActivity {
     ViewPager viewPager;
     @BindView(R.id.tab_layout_view)
     TabLayout tabLayout;
-    ProgressDialog progressDialog;
     //未选中的Tab图片
     private int[] unSelectTabRes = new int[]{R.drawable.sy_01, R.drawable.fl_01, R.drawable.bk_01, R.drawable.mine_01};
     //选中的Tab图片
@@ -84,9 +84,9 @@ public class MainActivity extends BaseActivity {
         setTheme(R.style.AppTheme);
         boolean login = AppTool.checkLogin();
         if (!login) {
-            Intent intent = new Intent(MainActivity.this, LoginActivity1.class);
-//            startActivity(intent);
-//            MainActivity.this.finish();
+            Intent intent = new Intent(MainActivity.this, LoginActivity.class);
+            startActivity(intent);
+            MainActivity.this.finish();
         }
         getWindow().getDecorView().post(new Runnable() {
             @Override
@@ -94,7 +94,7 @@ public class MainActivity extends BaseActivity {
                 myHandler.post(mLoadingRunnable);
             }
         });
-
+//        ImmersionBar.with(this).statusBarColor(R.color.dev_light_color).init();
 
     }
 

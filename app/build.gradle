@@ -53,6 +53,9 @@ android {
             jniLibs.srcDirs = ['../libs']
         }
     }
+    dataBinding{
+        enabled = false
+    }
 }
 
 dependencies {
@@ -83,6 +86,9 @@ dependencies {
     //RecyclerViewAdapter
 //    implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.1.1'
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.47'
+
+    implementation 'com.scwang.smartrefresh:SmartRefreshLayout:1.1.2'  //1.0.5及以前版本的老用户升级需谨慎，API改动过大
+//    implementation 'com.scwang.smartrefresh:SmartRefreshHeader:1.1.2'  //没有使用特殊Header，可以不加这行
     //sqlLite
     implementation 'org.litepal.android:java:3.0.0'
     //okHttp
@@ -128,6 +134,8 @@ dependencies {
 //    implementation 'com.github.AnJiaoDe:BaseDialog:V1.1.8'
 
     implementation 'com.kongzue.dialog_v3:dialog:3.1.8'
+
+    implementation 'com.contrarywind:Android-PickerView:4.1.9'
 
 }
 configurations {

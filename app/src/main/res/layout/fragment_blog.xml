@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/aliceBlue"
+    android:background="@color/dev_bg_color"
     android:orientation="vertical">
 
     <android.support.design.widget.AppBarLayout
@@ -15,8 +15,8 @@
             android:id="@+id/blog_toolbar_layout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/aliceBlue"
-            app:contentScrim="@color/soft_2"
+            android:background="@color/dev_bg_color"
+            app:contentScrim="@color/dev_light_blue_color"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
@@ -55,7 +55,7 @@
                         android:layout_weight="1"
                         android:gravity="end"
                         android:text="昵称*****"
-                        android:textColor="@color/ghostWhite"
+                        android:textColor="@color/dev_bf_bg_color"
                         android:textSize="20sp" />
 
                     <ImageView
@@ -87,7 +87,7 @@
                         android:layout_width="20dp"
                         android:layout_height="match_parent"
                         android:layout_gravity="center_vertical|left"
-                        app:srcCompat="@drawable/back" />
+                        app:srcCompat="@drawable/back_white" />
 
                     <TextView
                         android:layout_width="wrap_content"

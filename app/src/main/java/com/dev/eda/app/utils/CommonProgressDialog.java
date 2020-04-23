@@ -8,10 +8,14 @@ import android.support.v7.app.AlertDialog;
 import android.text.Spannable;
 import android.text.SpannableString;
 import android.text.style.StyleSpan;
+import android.view.View;
+import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.dev.eda.R;
+import com.kongzue.dialog.interfaces.OnDialogButtonClickListener;
 
 import java.text.NumberFormat;
 
@@ -22,6 +26,7 @@ public class CommonProgressDialog extends AlertDialog {
     private TextView mProgressNumber;
     private TextView mProgressPercent;
     private TextView mProgressMessage;
+    private Button mOkButton;
 
     private Handler mViewUpdateHandler;
     private int mMax;
@@ -48,6 +53,13 @@ public class CommonProgressDialog extends AlertDialog {
         mProgressNumber=(TextView) findViewById(R.id.progress_number);
         mProgressPercent=(TextView) findViewById(R.id.progress_percent);
         mProgressMessage=(TextView) findViewById(R.id.progress_message);
+        mOkButton = findViewById(R.id.ok_button);
+        mOkButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Logger.e("asd","asdsdasd");
+            }
+        });
 //      LayoutInflater inflater = LayoutInflater.from(getContext());
         mViewUpdateHandler = new Handler(new Handler.Callback() {
             @Override
@@ -126,6 +138,7 @@ public class CommonProgressDialog extends AlertDialog {
 //            mIndeterminate = indeterminate;
 //        }
     }
+
     public void setProgress(int value) {
         if (mHasStarted) {
             mProgress.setProgress(value);
@@ -134,7 +147,6 @@ public class CommonProgressDialog extends AlertDialog {
             mProgressVal = value;
         }
     }
-
 
     @Override
     public void setMessage(CharSequence message) {
@@ -151,7 +163,6 @@ public class CommonProgressDialog extends AlertDialog {
 
     @Override
     protected void onStart() {
-        // TODO Auto-generated method stub
         super.onStart();
         mHasStarted = true;
     }
@@ -159,9 +170,13 @@ public class CommonProgressDialog extends AlertDialog {
 
     @Override
     protected void onStop() {
-        // TODO Auto-generated method stub
         super.onStop();
         mHasStarted = false;
+    }
+
+    public void setButton(String text, View.OnClickListener listener){
+        mOkButton.setText(text);
+        mOkButton.setOnClickListener(listener);
     }
 
 }

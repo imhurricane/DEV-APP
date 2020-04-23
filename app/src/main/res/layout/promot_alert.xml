@@ -37,7 +37,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginLeft="40dp"
-            android:background="@color/deepSkyBlue"
+            android:background="@color/dev_light_blue_color"
             android:text="确定"
             android:textColor="@android:color/white" />
 

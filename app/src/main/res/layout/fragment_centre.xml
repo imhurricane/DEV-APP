@@ -8,7 +8,7 @@
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="5dp"
-        android:background="@color/soft_2" />
+        android:background="@color/dev_light_blue_color" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_centre"

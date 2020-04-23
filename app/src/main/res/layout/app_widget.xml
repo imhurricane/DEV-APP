@@ -2,7 +2,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/aliceBlue"
+    android:background="@color/dev_bg_color"
     android:orientation="vertical">
 
     <Button
@@ -10,7 +10,7 @@
         android:layout_width="match_parent"
         android:layout_height="30dp"
         android:layout_gravity="center_horizontal"
-        android:background="@color/soft_2"
+        android:background="@color/dev_light_blue_color"
         android:text="刷新" />
 
     <ListView

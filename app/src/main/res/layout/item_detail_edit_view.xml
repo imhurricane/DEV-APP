@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:focusable="true"
+    android:padding="5dp"
+    android:focusableInTouchMode="true">
+
+    <TextView
+        android:id="@+id/edit_column_name"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="center_vertical|center_horizontal"
+        android:textSize="18sp"
+        android:textColor="@color/dev_column_name_color"/>
+
+    <EditText
+        android:id="@+id/edit_column_value"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="3"
+        android:background="@null"
+        android:gravity="top"
+        android:minHeight="60dp"
+        android:minLines="1"
+        android:textColor="@color/dev_column_value_color"
+        android:textCursorDrawable="@drawable/corner_cursor"
+        android:textSelectHandle="@drawable/bg_edit_cursor_none"
+        android:textSize="16sp" />
+
+
+</LinearLayout>

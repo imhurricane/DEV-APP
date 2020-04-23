@@ -1,23 +1,13 @@
 package com.dev.eda.app.utils;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.os.Build;
-import android.support.v7.app.AlertDialog;
-import android.util.Log;
-import android.view.LayoutInflater;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-
-
-import com.dev.eda.R;
 import com.dev.eda.frame.login.model.LoginUser;
 
 import org.litepal.LitePal;
 
+import java.math.BigInteger;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.util.Base64;
@@ -30,45 +20,73 @@ public class AppTool {
     public static int LoginLost = 1;
 
     public static String encodeByMd5(String string) {
-        try{
+        try {
             // 确定计算方法
             MessageDigest md5 = MessageDigest.getInstance("MD5");
             Base64.Encoder base64Encoder = null;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
                 base64Encoder = Base64.getEncoder();
                 return base64Encoder.encodeToString(md5.digest(string.getBytes(StandardCharsets.UTF_8)));
-            }else{
+            } else {
                 return string;
             }
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
-            Logger.e("encodeByMd5","MD5加密错误");
+            Logger.e("encodeByMd5", "MD5加密错误");
         }
         return string;
     }
 
-    public static boolean checkLogin(){
+    public static String makeMD5(String password) {
+        try {
+            // 生成一个MD5加密计算摘要
+            MessageDigest md = MessageDigest.getInstance("MD5");
+            // 计算md5函数
+            md.update(password.getBytes());
+            // digest()最后确定返回md5 hash值，返回值为8为字符串。因为md5 hash值是16位的hex值，实际上就是8位的字符
+            // BigInteger函数则将8位的字符串转换成16位hex值，用字符串来表示；得到字符串形式的hash值
+            String pwd = new BigInteger(1, md.digest()).toString(16);
+            //			System.err.println(pwd);
+            return pwd;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public static boolean checkLogin() {
 
         boolean flag = false;
-        List<LoginUser> users = LitePal.where("userXtm = currentUserXtm").find(LoginUser.class);
-        if (users.size() == 1){
+        List<LoginUser> users = LitePal.where("yhxtm = currentUserXtm").find(LoginUser.class);
+        if (users.size() == 1) {
             LoginUser loginUser = users.get(0);
-            Logger.e("loginUser.getLastLoginDate()",loginUser.getLastLoginDate());
             String lastLoginDate = loginUser.getLastLoginDate();
             Date date1 = DateTool.StrToDate(lastLoginDate);
             Date date = DateTool.subDate(LoginLost);
-            if (date1.after(date)){
+            if (date1.after(date)) {
                 flag = true;
             }
         }
         return flag;
     }
 
-    public static String getAppVersionName(Context context){
+    public static LoginUser getLoginUserInfo(){
+        List<LoginUser> users = LitePal.where("yhxtm = currentUserXtm").find(LoginUser.class);
+        if (users.size() == 1){
+            LoginUser user = users.get(0);
+            return user;
+        }
+        return null;
+    }
+
+
+
+
+    public static String getAppVersionName(Context context) {
         return getPackageInfo(context).versionName;
     }
 
-    public static int getAppVersionCode(Context context){
+    public static int getAppVersionCode(Context context) {
         return getPackageInfo(context).versionCode;
     }
 
@@ -84,36 +102,4 @@ public class AppTool {
         return pInfo;
     }
 
-
-    public static void showAlert(Context context, String msg) {
-        LayoutInflater layoutInflater = LayoutInflater.from(context);
-        final View layout = layoutInflater.inflate(R.layout.promot_alert,
-                null);
-
-        final AlertDialog alertDialog = new AlertDialog.Builder(context).setTitle("").setView(layout)
-                .setPositiveButton("", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                    }
-                })
-                .setNegativeButton("", null).show();
-
-        TextView alert_title = layout.findViewById(R.id.promot_alert_title);
-        alert_title.setText(msg);
-        Button confirm = layout.findViewById(R.id.promot_confirm);
-        confirm.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                alertDialog.dismiss();
-            }
-        });
-    }
-
-    public static class SpaceImageDetail{
-        public static final String IMAGEURL = "imageUrl";
-        public static final String LOCATIONX = "locationX";
-        public static final String LOCATIONY = "locationY";
-        public static final String WIDTH = "width";
-        public static final String HEIGHT = "height";
-    }
 }

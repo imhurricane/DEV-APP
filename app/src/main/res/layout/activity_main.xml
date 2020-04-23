@@ -21,12 +21,13 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center_vertical"
-        android:background="@color/lightDark"
+        android:background="@color/dev_bg_color"
         app:tabPadding="0dp"
         app:tabGravity="fill"
         app:tabIndicatorHeight="0dp"
         app:tabMode="fixed"
-        app:tabSelectedTextColor="@color/select"
+        app:tabSelectedTextColor="@color/dev_select_color"
         app:tabTextColor="#A0A0A0" />
+
 
 </LinearLayout>

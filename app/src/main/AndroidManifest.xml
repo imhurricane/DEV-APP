@@ -47,7 +47,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:windowDisablePreview="true"
-        android:theme="@style/Theme.AppCompat.Light.NoActionBar">
+        android:theme="@style/AnimActivity">
 
         <activity
             android:name=".frame.root.activity.MainActivity"
@@ -75,8 +75,14 @@
             android:permission="android.permission.BIND_REMOTEVIEWS" />
 
         <activity
-            android:name=".frame.login.activity.LoginActivity1"
+            android:name=".frame.login.activity.LoginActivity"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="stateHidden|adjustResize"/>
+        <activity
+            android:name=".frame.view.activity.ListViewActivity"
             android:launchMode="singleTask" />
+        <activity android:name=".frame.view.activity.ListViewDetailActivity"
+            android:launchMode="singleTask"/>
         <activity
             android:name=".app.camera.MyCamera"
             android:launchMode="singleTask" />

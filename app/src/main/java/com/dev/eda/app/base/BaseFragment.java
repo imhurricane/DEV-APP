@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.dev.eda.R;
+import com.dev.eda.app.utils.Logger;
 import com.gyf.immersionbar.ImmersionBar;
 
 import butterknife.ButterKnife;
@@ -99,14 +100,14 @@ public abstract class BaseFragment extends Fragment {
      * 初始化数据
      */
     protected void initData() {
-
+        Logger.e("BaseFragment","initData");
     }
 
     /**
      * view与数据绑定
      */
     protected void initView() {
-
+        Logger.e("BaseFragment","initView");
     }
 
     /**

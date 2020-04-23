@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <selector xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:state_focused="false" android:drawable="@color/clear"/>
-    <item android:state_focused="true" android:drawable="@color/block"/>
+    <item android:state_focused="false" android:drawable="@color/dev_light_color"/>
+    <item android:state_focused="true" android:drawable="@color/dev_light_gray_color"/>
 
 </selector>

@@ -3,11 +3,11 @@ package com.dev.eda.frame.login.model;
 
 import org.litepal.crud.LitePalSupport;
 
-import java.util.Date;
-
 public class LoginUser extends LitePalSupport {
 
-    private String userXtm;
+    private int code;
+
+    private String yhxtm;
 
     private String userName;
 
@@ -16,6 +16,18 @@ public class LoginUser extends LitePalSupport {
     private String lastLoginDate;
 
     private String currentUserXtm;
+
+    private String sitextm;
+
+    private String issysadmin;
+
+    private String devicextm;
+
+    private String usernamecn;
+
+    private String orgxtm;
+
+    private String deptname;
 
     public String getCurrentUserXtm() {
         return currentUserXtm;
@@ -33,12 +45,12 @@ public class LoginUser extends LitePalSupport {
         this.lastLoginDate = lastLoginDate;
     }
 
-    public String getUserXtm() {
-        return userXtm;
+    public String getYhxtm() {
+        return yhxtm;
     }
 
-    public void setUserXtm(String userXtm) {
-        this.userXtm = userXtm;
+    public void setYhxtm(String yhxtm) {
+        this.yhxtm = yhxtm;
     }
 
     public String getUserName() {
@@ -57,14 +69,77 @@ public class LoginUser extends LitePalSupport {
         this.passWord = passWord;
     }
 
+    public String getSitextm() {
+        return sitextm;
+    }
+
+    public void setSitextm(String sitextm) {
+        this.sitextm = sitextm;
+    }
+
+    public String getIssysadmin() {
+        return issysadmin;
+    }
+
+    public void setIssysadmin(String issysadmin) {
+        this.issysadmin = issysadmin;
+    }
+
+    public String getDevicextm() {
+        return devicextm;
+    }
+
+    public void setDevicextm(String devicextm) {
+        this.devicextm = devicextm;
+    }
+
+    public String getUsernamecn() {
+        return usernamecn;
+    }
+
+    public void setUsernamecn(String usernamecn) {
+        this.usernamecn = usernamecn;
+    }
+
+    public String getOrgxtm() {
+        return orgxtm;
+    }
+
+    public void setOrgxtm(String orgxtm) {
+        this.orgxtm = orgxtm;
+    }
+
+    public String getDeptname() {
+        return deptname;
+    }
+
+    public void setDeptname(String deptname) {
+        this.deptname = deptname;
+    }
+
+    public int getCode() {
+        return code;
+    }
+
+    public void setCode(int code) {
+        this.code = code;
+    }
+
     @Override
     public String toString() {
         return "LoginUser{" +
-                "userXtm='" + userXtm + '\'' +
+                "yhxtm='" + yhxtm + '\'' +
                 ", userName='" + userName + '\'' +
                 ", passWord='" + passWord + '\'' +
-                ", lastLoginDate=" + lastLoginDate +
+                ", lastLoginDate='" + lastLoginDate + '\'' +
                 ", currentUserXtm='" + currentUserXtm + '\'' +
+                ", sitextm='" + sitextm + '\'' +
+                ", issysadmin='" + issysadmin + '\'' +
+                ", devicextm='" + devicextm + '\'' +
+                ", usernamecn='" + usernamecn + '\'' +
+                ", orgxtm='" + orgxtm + '\'' +
+                ", deptname='" + deptname + '\'' +
+                ", code='" + code + '\'' +
                 '}';
     }
 }

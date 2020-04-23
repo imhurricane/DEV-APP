@@ -1,12 +1,21 @@
-package com.dev.eda.app.utils;
+package com.dev.eda.app.http.callback;
 
 import android.content.Context;
 import android.content.DialogInterface;
 
+import com.dev.eda.app.http.loding.LoadingDialog;
+import com.dev.eda.app.utils.LogUtils;
+import com.dev.eda.app.utils.Logger;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
+import com.lzy.okgo.exception.HttpException;
+import com.lzy.okgo.exception.StorageException;
 import com.lzy.okgo.model.Response;
 import com.lzy.okgo.request.base.Request;
+
+import java.net.ConnectException;
+import java.net.SocketTimeoutException;
+import java.net.UnknownHostException;
 
 public class DialogCallBack extends StringCallback {
 
@@ -79,8 +88,25 @@ public class DialogCallBack extends StringCallback {
 
     @Override
     public void onError(Response<String> response) {
-        super.onError(response);
         LogUtils.i(tag_log + "onError:" + response.body());
+        Throwable exception = response.getException();
+        if (exception != null) exception.printStackTrace();
+
+        if (exception instanceof UnknownHostException || exception instanceof ConnectException) {
+            Logger.e("http", "网络连接失败");
+        } else if (exception instanceof SocketTimeoutException) {
+            Logger.e("http", "网络请求超时");
+        } else if (exception instanceof HttpException) {
+            Logger.e("http", "服务端错误，404 or 500");
+
+        } else if (exception instanceof StorageException) {
+            Logger.e("http", "sd卡不存在或者没有权限");
+        } else if (exception instanceof IllegalStateException) {
+            //自定义抛出的异常
+            String message = exception.getMessage();
+            Logger.e("http", message);
+        }
+//        super.onError(response);
     }
 
 }

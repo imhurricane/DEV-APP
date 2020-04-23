@@ -73,7 +73,9 @@ public class CentreFragment extends BaseFragment {
     @Override
     protected void initView() {
         recyclerViewCentre.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerViewCentre.setAdapter(new CentreAdapter(R.layout.item_centre, centreList, getContext()));
+        CentreAdapter centreAdapter = new CentreAdapter(R.layout.item_centre, centreList, getContext());
+
+        recyclerViewCentre.setAdapter(centreAdapter);
     }
 
     @Override

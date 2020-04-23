@@ -1,4 +1,4 @@
-package com.dev.eda.app.utils;
+package com.dev.eda.app.http.loding;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -78,12 +78,10 @@ public class LoadingDialog extends Dialog {
         return mLoadingProgress;
     }
 
-
-
-
     public static void dismissprogress(){
         if(mLoadingProgress!=null){
             mLoadingProgress.dismiss();
+            mLoadingProgress = null;
         }
     }
 }

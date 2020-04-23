@@ -1,18 +1,22 @@
 package com.dev.eda.frame.mine.fragment;
 
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.dev.eda.R;
 import com.dev.eda.app.base.BaseFragment;
-import com.dev.eda.app.utils.AlertSetting;
 import com.dev.eda.app.utils.CommonProgressDialog;
+import com.dev.eda.frame.login.activity.LoginActivity;
+import com.dev.eda.frame.login.model.LoginUser;
 import com.kongzue.dialog.v3.MessageDialog;
+
+import org.litepal.LitePal;
 
 import butterknife.BindView;
 
@@ -25,6 +29,8 @@ public class MineFragment extends BaseFragment {
     LinearLayout alertLayout;
     @BindView(R.id.download)
     LinearLayout download;
+    @BindView(R.id.btn_logout)
+    Button mLogout;
     CommonProgressDialog mDialog1;
 
     public static MineFragment getInstance() {
@@ -46,7 +52,6 @@ public class MineFragment extends BaseFragment {
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 //        ImmersionBar.with(this).statusBarColor(R.color.lightDark).statusBarDarkFont(true).init();
-        AlertSetting.init(mActivity);
     }
 
     @Override
@@ -71,7 +76,8 @@ public class MineFragment extends BaseFragment {
             @Override
             public void onClick(View v) {
 //                MessageDialog.build(mActivity)
-                MessageDialog.show(mActivity, "提示", "这是一条消息", "确定");
+                MessageDialog.show(mActivity, "提示", "这是一条消息", "确定","取消");
+
             }
         });
         download.setOnClickListener(new View.OnClickListener() {
@@ -80,16 +86,28 @@ public class MineFragment extends BaseFragment {
                 mDialog1 = new CommonProgressDialog(mActivity);
                 mDialog1.setMessage("正在下载");
                 mDialog1.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
-                mDialog1.setOnCancelListener(new DialogInterface.OnCancelListener() {
+                mDialog1.setCanceledOnTouchOutside(false);
+                mDialog1.show();
+                mDialog1.setButton("确定", new View.OnClickListener() {
                     @Override
-                    public void onCancel(DialogInterface dialog) {
-                        // TODO Auto-generated method stub
-                        //cancel(true);
+                    public void onClick(View v) {
+                        mDialog1.dismiss();
                     }
                 });
-                mDialog1.show();
+                mDialog1.setCancelable(false);
                 mDialog1.setMax(100*1024*1024);
                 mDialog1.setProgress(65*1024*1024);
+            }
+        });
+        mLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                LoginUser loginUser = new LoginUser();
+                loginUser.setCurrentUserXtm("");
+                loginUser.updateAll("currentUserXtm != ''");
+                Intent intent = new Intent(getActivity(), LoginActivity.class);
+                startActivity(intent);
+                getActivity().finish();
             }
         });
     }
@@ -104,4 +122,5 @@ public class MineFragment extends BaseFragment {
         super.onDestroy();
         mInstance = null;
     }
+
 }

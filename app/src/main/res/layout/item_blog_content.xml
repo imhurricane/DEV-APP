@@ -6,7 +6,7 @@
     android:layout_marginLeft="10dp"
     android:layout_marginTop="40dp"
     android:layout_marginRight="10dp"
-    android:background="@color/aliceBlue"
+    android:background="@color/dev_bg_color"
     android:orientation="vertical">
 
 

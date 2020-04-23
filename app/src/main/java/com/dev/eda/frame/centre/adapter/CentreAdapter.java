@@ -7,12 +7,13 @@ import android.support.v7.widget.RecyclerView;
 
 import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
+import com.chad.library.adapter.base.loadmore.SimpleLoadMoreView;
 import com.dev.eda.R;
 import com.dev.eda.frame.centre.model.Centre;
 
 import java.util.List;
 
-public class CentreAdapter extends BaseQuickAdapter<Centre,BaseViewHolder> {
+public class CentreAdapter extends BaseQuickAdapter<Centre,BaseViewHolder>  {
 
     private Context mContext;
     private List<Centre> mData;
