@@ -2,22 +2,16 @@ package com.dev.eda.frame.view.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.CardView;
 import android.text.Html;
 import android.text.Spanned;
 import android.view.View;
-import android.webkit.WebView;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
 import com.chad.library.adapter.base.BaseMultiItemQuickAdapter;
 import com.chad.library.adapter.base.BaseViewHolder;
 import com.dev.eda.R;
-import com.dev.eda.app.utils.HttpRequestUrl;
 import com.dev.eda.frame.view.activity.ListViewDetailActivity;
 import com.dev.eda.frame.view.model.ItemListView;
 import com.dev.eda.frame.view.utils.MyHtmlTagHandler;
@@ -26,7 +20,7 @@ import java.util.List;
 
 public class ListViewAdapter extends BaseMultiItemQuickAdapter<ItemListView, BaseViewHolder> {
 
-    public ListViewAdapter(Context context,List<ItemListView> data) {
+    public ListViewAdapter(Context context, List<ItemListView> data) {
         super(data);
         mContext = context;
         addItemType(ItemListView.item_type_all, R.layout.item_list_view_recycle);
@@ -65,22 +59,22 @@ public class ListViewAdapter extends BaseMultiItemQuickAdapter<ItemListView, Bas
 ////                textViewContent.setText(Html.fromHtml(contentHtml));
 //                textViewContent.setText(myfont);
 //                textViewContent.setLineSpacing(34,0.5f);
-                StringBuffer sb=new StringBuffer();
+                StringBuffer sb = new StringBuffer();
 //                sb.append("<html><head><meta http-equiv='content-type' content='text/html; charset=utf-8'>");
 //                sb.append("<meta charset='utf-8'  content='1'></head><body style='color: red'><p></p>");
-                if(title != null){
-                    sb.append("<myfont color='red' size='64px'>"+title+"</myfont><br/>");
+                if (title != null) {
+                    sb.append("<myfont color='red' size='64px'>" + title + "</myfont><br/>");
                 }
-                if(describe != null){
-                    sb.append("<myfont color='red' size='44px'>"+describe+"</myfont><br/>");
+                if (describe != null) {
+                    sb.append("<myfont color='red' size='44px'>" + describe + "</myfont><br/>");
                 }
-                if(note != null){
-                    sb.append("<myfont color='red' size='44px'>"+note+"</myfont>");
+                if (note != null) {
+                    sb.append("<myfont color='red' size='44px'>" + note + "</myfont>");
                 }
 
-                if(subTitle != null){
+                if (subTitle != null) {
                     textViewSubTitle.setText(subTitle);
-                }else{
+                } else {
                     textViewSubTitle.setVisibility(View.GONE);
                 }
                 Spanned myfont = Html.fromHtml(sb.toString(), null, new MyHtmlTagHandler("myfont"));
@@ -89,7 +83,7 @@ public class ListViewAdapter extends BaseMultiItemQuickAdapter<ItemListView, Bas
                 linearLayout.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        startActivity(item.getDetailPageId(),item.getItemListViewContent().getId());
+                        startActivity(item.getDetailPageId(), item.getItemListViewContent().getId());
                     }
                 });
                 break;
@@ -98,10 +92,10 @@ public class ListViewAdapter extends BaseMultiItemQuickAdapter<ItemListView, Bas
         }
     }
 
-    private void startActivity(String detailPage,String id){
+    private void startActivity(String detailPage, String id) {
         Intent intent = new Intent(mContext, ListViewDetailActivity.class);
-        intent.putExtra("detailPageId",detailPage);
-        intent.putExtra("id",id);
+        intent.putExtra("detailPageId", detailPage);
+        intent.putExtra("id", id);
         mContext.startActivity(intent);
     }
 }
