@@ -8,6 +8,7 @@ import android.support.v7.widget.CardView;
 import android.text.Html;
 import android.text.Spanned;
 import android.view.View;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -36,45 +37,54 @@ public class ListViewAdapter extends BaseMultiItemQuickAdapter<ItemListView, Bas
     protected void convert(@NonNull BaseViewHolder helper, ItemListView item) {
         switch (helper.getItemViewType()) {
             case ItemListView.item_type_all:
-                ImageView imageView = helper.getView(R.id.title_image);
                 TextView textViewContent = helper.getView(R.id.default_description);
+//                WebView webView = helper.getView(R.id.default_web_description);
                 TextView textViewSubTitle = helper.getView(R.id.item_sub_title);
                 CardView linearLayout = helper.getView(R.id.item_layout);
 
-                Glide.with(mContext)
-                .load(HttpRequestUrl.BaseURI+item.getIcon())
-                .placeholder(R.drawable.shanghai)
-                .into(imageView);
-                textViewContent.setHorizontallyScrolling(true);
+//                textViewContent.setHorizontallyScrolling(true);
                 String title = item.getItemListViewContent().getTitle();
                 String subTitle = item.getItemListViewContent().getSubTitle();
                 String describe = item.getItemListViewContent().getDescribe();
                 String note = item.getItemListViewContent().getNote();
 
-                String contentHtml = "<span>";
+//                String contentHtml = "<div>";
+//                if(title != null){
+//                    contentHtml += "<span>  </span>";
+//                    contentHtml += "<myfont color='#000000' size='60px'>"+title+"</myfont><br/>";
+//                    contentHtml += "<span> </span>";
+//                }
+//                if(describe != null){
+//                    contentHtml += "<myfont size='44px'>"+describe+"</myfont><br/>";
+//                }
+//                if(note != null){
+//                    contentHtml += "<myfont size='44px'>"+note+"</myfont>";
+//                }
+//                contentHtml += "</div>";
+//                Spanned myfont = Html.fromHtml(contentHtml, null, new MyHtmlTagHandler("myfont"));
+////                textViewContent.setText(Html.fromHtml(contentHtml));
+//                textViewContent.setText(myfont);
+//                textViewContent.setLineSpacing(34,0.5f);
+                StringBuffer sb=new StringBuffer();
+//                sb.append("<html><head><meta http-equiv='content-type' content='text/html; charset=utf-8'>");
+//                sb.append("<meta charset='utf-8'  content='1'></head><body style='color: red'><p></p>");
                 if(title != null){
-                    contentHtml += "<myfont size='50px'>"+title+"</myfont><br/>";
+                    sb.append("<myfont color='red' size='64px'>"+title+"</myfont><br/>");
                 }
                 if(describe != null){
-                    contentHtml += "<myfont color='#D3D3D3' size='44px'>"+describe+"</myfont><br/>";
+                    sb.append("<myfont color='red' size='44px'>"+describe+"</myfont><br/>");
                 }
                 if(note != null){
-                    contentHtml += "<myfont color='#D3D3D3' size='40px'>"+note+"</myfont>";
+                    sb.append("<myfont color='red' size='44px'>"+note+"</myfont>");
                 }
-                contentHtml += "</span>";
-                Spanned myfont = Html.fromHtml(contentHtml, null, new MyHtmlTagHandler("myfont"));
-//                textViewContent.setText(Html.fromHtml(contentHtml));
-                textViewContent.setText(myfont);
-                textViewContent.setLineSpacing(28,0.5f);
+
                 if(subTitle != null){
-                    textViewSubTitle.setTextSize(16);
-//                    textViewSubTitle.setHorizontallyScrolling(true);
-                    textViewSubTitle.setTextColor(Color.parseColor("#D3D3D3"));
                     textViewSubTitle.setText(subTitle);
                 }else{
                     textViewSubTitle.setVisibility(View.GONE);
                 }
-
+                Spanned myfont = Html.fromHtml(sb.toString(), null, new MyHtmlTagHandler("myfont"));
+                textViewContent.setText(myfont);
                 helper.addOnClickListener(R.id.item_layout);
                 linearLayout.setOnClickListener(new View.OnClickListener() {
                     @Override

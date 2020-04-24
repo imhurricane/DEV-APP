@@ -55,7 +55,7 @@ public class DataSever {
                         needToDo.setResourceId(R.drawable.shanghai);
                         needToDo.setText("您有2条新消息");
                         home1.setNeedToDo(needToDo);
-                        mHome.add(home1);
+//                        mHome.add(home1);
 
                         Home home = new Home(Home.itemType_chart);
                         ChartModel chartModel = new ChartModel();
@@ -72,7 +72,7 @@ public class DataSever {
 
                         chartModel.setChartData(values);
                         home.setChartModel(chartModel);
-                        mHome.add(home);
+//                        mHome.add(home);
 
                         Home home4 = new Home(Home.itemType_chart_1);
                         ChartModel chartModel1 = new ChartModel();
@@ -85,7 +85,7 @@ public class DataSever {
                         }
                         chartModel1.setChartData(values1);
                         home4.setChartModel(chartModel1);
-                        mHome.add(home4);
+//                        mHome.add(home4);
 
 //                        Home home3 = new Home(Home.itemType_footer);
 //                        mHome.add(home3);

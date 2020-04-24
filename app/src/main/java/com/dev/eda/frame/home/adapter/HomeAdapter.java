@@ -56,7 +56,7 @@ public class HomeAdapter extends BaseMultiItemQuickAdapter<Home, BaseViewHolder>
 
         switch (helper.getItemViewType()) {
             case Home.itemType_banner:
-                mBanner = helper.getView(R.id.banner);
+                mBanner = helper.getView(R.id.item_banner);
                 BannerModel bannerModel = item.getBannerModel();
                 initBanner(bannerModel.getImageResource(),bannerModel.getTitle());
 //                banner.start();
@@ -104,83 +104,89 @@ public class HomeAdapter extends BaseMultiItemQuickAdapter<Home, BaseViewHolder>
                 view.setAdapter(homeGridRecycleViewAdapter);
                 break;
             case Home.itemType_card:
-                helper.setImageResource(R.id.iv_avatar, item.getNeedToDo().getResourceId());
-                helper.setText(R.id.tv_name, item.getNeedToDo().getText());
+                if (item.getNeedToDo() != null) {
+                    helper.setImageResource(R.id.iv_avatar, item.getNeedToDo().getResourceId());
+                    helper.setText(R.id.tv_name, item.getNeedToDo().getText());
+                }
                 break;
             case Home.itemType_chart:
-                LineChart chart = helper.getView(R.id.lineChart);
-                ArrayList chartData = item.getChartModel().getChartData();
-                String label = item.getChartModel().getLabel();
-                Description description = item.getChartModel().getDescription();
-                chart.setDrawGridBackground(false);
-                chart.setTouchEnabled(false);
-                chart.setDragEnabled(true);
-                chart.setScaleEnabled(true);
-                chart.setPinchZoom(true);
-                if (description == null) {
-                    chart.getDescription().setEnabled(false);
-                } else {
-                    chart.setDescription(description);
-                }
-                MyMarkerView mv1 = new MyMarkerView(mContext, R.layout.custom_marker_view);
-                mv1.setChartView(chart);
-                chart.setMarker(mv1);
+                if (item.getChartModel() != null) {
+                    LineChart chart = helper.getView(R.id.lineChart);
+                    ArrayList chartData = item.getChartModel().getChartData();
+                    String label = item.getChartModel().getLabel();
+                    Description description = item.getChartModel().getDescription();
+                    chart.setDrawGridBackground(false);
+                    chart.setTouchEnabled(false);
+                    chart.setDragEnabled(true);
+                    chart.setScaleEnabled(true);
+                    chart.setPinchZoom(true);
+                    if (description == null) {
+                        chart.getDescription().setEnabled(false);
+                    } else {
+                        chart.setDescription(description);
+                    }
+                    MyMarkerView mv1 = new MyMarkerView(mContext, R.layout.custom_marker_view);
+                    mv1.setChartView(chart);
+                    chart.setMarker(mv1);
 
-                if (chart.getData() != null && chart.getData().getDataSetCount() > 0) {
-                    LineDataSet set = (LineDataSet) chart.getData().getDataSetByIndex(0);
-                    set.setValues(chartData);
-                    chart.getData().notifyDataChanged();
-                    chart.notifyDataSetChanged();
-                } else {
-                    LineData lineData = ChartsTool.getChartsData(chartData, label);
-                    chart.setData(lineData);
+                    if (chart.getData() != null && chart.getData().getDataSetCount() > 0) {
+                        LineDataSet set = (LineDataSet) chart.getData().getDataSetByIndex(0);
+                        set.setValues(chartData);
+                        chart.getData().notifyDataChanged();
+                        chart.notifyDataSetChanged();
+                    } else {
+                        LineData lineData = ChartsTool.getChartsData(chartData, label);
+                        chart.setData(lineData);
+                    }
+                    Legend l1 = chart.getLegend();
+                    l1.setForm(Legend.LegendForm.LINE);
+                    chart.invalidate();
                 }
-                Legend l1 = chart.getLegend();
-                l1.setForm(Legend.LegendForm.LINE);
-                chart.invalidate();
                 break;
             case Home.itemType_chart_1:
-                LineChart chart_1 = helper.getView(R.id.lineChart);
-                ArrayList chartData_1 = item.getChartModel().getChartData();
-                String label_1 = item.getChartModel().getLabel();
-                Description description_1 = item.getChartModel().getDescription();
+                if (item.getChartModel() != null) {
+                    LineChart chart_1 = helper.getView(R.id.lineChart);
+                    ArrayList chartData_1 = item.getChartModel().getChartData();
+                    String label_1 = item.getChartModel().getLabel();
+                    Description description_1 = item.getChartModel().getDescription();
 
-                chart_1.setDrawGridBackground(false);
-                chart_1.setTouchEnabled(false);
-                chart_1.setDragEnabled(true);
-                chart_1.setScaleEnabled(true);
-                chart_1.setPinchZoom(true);
-                if (description_1 == null) {
-                    chart_1.getDescription().setEnabled(false);
-                } else {
-                    chart_1.setDescription(description_1);
+                    chart_1.setDrawGridBackground(false);
+                    chart_1.setTouchEnabled(false);
+                    chart_1.setDragEnabled(true);
+                    chart_1.setScaleEnabled(true);
+                    chart_1.setPinchZoom(true);
+                    if (description_1 == null) {
+                        chart_1.getDescription().setEnabled(false);
+                    } else {
+                        chart_1.setDescription(description_1);
+                    }
+                    MyMarkerView mv = new MyMarkerView(mContext, R.layout.custom_marker_view);
+                    mv.setChartView(chart_1);
+                    chart_1.setMarker(mv);
+                    XAxis xl = chart_1.getXAxis();
+                    xl.setAvoidFirstLastClipping(true);
+                    xl.setAxisMinimum(0f);
+
+                    YAxis leftAxis = chart_1.getAxisLeft();
+                    leftAxis.setInverted(true);
+                    leftAxis.setAxisMinimum(0f);
+
+                    YAxis rightAxis = chart_1.getAxisRight();
+                    rightAxis.setEnabled(false);
+
+                    if (chart_1.getData() != null && chart_1.getData().getDataSetCount() > 0) {
+                        LineDataSet set = (LineDataSet) chart_1.getData().getDataSetByIndex(0);
+                        set.setValues(chartData_1);
+                        chart_1.getData().notifyDataChanged();
+                        chart_1.notifyDataSetChanged();
+                    } else {
+                        LineData lineData = ChartsTool.getChartsData_1(chartData_1, label_1);
+                        chart_1.setData(lineData);
+                    }
+                    Legend l = chart_1.getLegend();
+                    l.setForm(Legend.LegendForm.LINE);
+                    chart_1.invalidate();
                 }
-                MyMarkerView mv = new MyMarkerView(mContext, R.layout.custom_marker_view);
-                mv.setChartView(chart_1);
-                chart_1.setMarker(mv);
-                XAxis xl = chart_1.getXAxis();
-                xl.setAvoidFirstLastClipping(true);
-                xl.setAxisMinimum(0f);
-
-                YAxis leftAxis = chart_1.getAxisLeft();
-                leftAxis.setInverted(true);
-                leftAxis.setAxisMinimum(0f);
-
-                YAxis rightAxis = chart_1.getAxisRight();
-                rightAxis.setEnabled(false);
-
-                if (chart_1.getData() != null && chart_1.getData().getDataSetCount() > 0) {
-                    LineDataSet set = (LineDataSet) chart_1.getData().getDataSetByIndex(0);
-                    set.setValues(chartData_1);
-                    chart_1.getData().notifyDataChanged();
-                    chart_1.notifyDataSetChanged();
-                } else {
-                    LineData lineData = ChartsTool.getChartsData_1(chartData_1, label_1);
-                    chart_1.setData(lineData);
-                }
-                Legend l = chart_1.getLegend();
-                l.setForm(Legend.LegendForm.LINE);
-                chart_1.invalidate();
                 break;
 //            case Home.itemType_footer:
 //                        helper.setText()
