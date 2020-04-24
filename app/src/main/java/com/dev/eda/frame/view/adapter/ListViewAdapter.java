@@ -62,7 +62,6 @@ public class ListViewAdapter extends BaseMultiItemQuickAdapter<ItemListView, Bas
                 StringBuffer sb = new StringBuffer();
 //                sb.append("<html><head><meta http-equiv='content-type' content='text/html; charset=utf-8'>");
 //                sb.append("<meta charset='utf-8'  content='1'></head><body style='color: red'><p></p>");
-
                 if (title != null) {
                     sb.append("<myfont color='red' size='64px'>" + title + "</myfont><br/>");
                 }
